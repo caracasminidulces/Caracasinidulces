@@ -68,6 +68,15 @@ export default function PipingOverlay({ onComplete }: PipingOverlayProps) {
                   <feGaussianBlur stdDeviation="6" result="blur" />
                   <feComposite in="SourceGraphic" in2="blur" operator="over" />
                 </filter>
+                <linearGradient id="goldBag" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#FDF3BF" />
+                  <stop offset="50%" stopColor="#E5C414" />
+                  <stop offset="100%" stopColor="#B39200" />
+                </linearGradient>
+                <linearGradient id="silverNozzle" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#E5E7EB" />
+                  <stop offset="100%" stopColor="#9CA3AF" />
+                </linearGradient>
               </defs>
 
               {/* Trazado 1 (Sombra de relieve dorada inferior) */}
@@ -111,46 +120,19 @@ export default function PipingOverlay({ onComplete }: PipingOverlayProps) {
                 animate={{ pathLength: animationStage !== "idle" ? 1 : 0 }}
                 transition={{ duration: 1.8, ease: "easeInOut" }}
               />
-            </svg>
 
-            {/* Div animado que porta la Manga Repostera y sigue el trazado mediante offset CSS */}
-            {animationStage === "drawing" && (
-              <motion.div
-                initial={{ offsetDistance: "0%", opacity: 1 }}
-                animate={{ offsetDistance: "100%" }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 1.8, ease: "easeInOut" }}
-                style={{
-                  offsetPath: `path('${creamPath}')`,
-                  offsetRotate: "auto -45deg", // Auto-rotación tangente + inclinación natural del chef
-                  position: "absolute",
-                  width: "1px",
-                  height: "1px",
-                  zIndex: 20,
-                }}
-              >
-                {/* Manga Repostera SVG (Punto de anclaje de boquilla en 0,0) */}
-                <svg
-                  width="70"
-                  height="140"
-                  viewBox="-35 -120 70 140"
-                  className="absolute"
+              {/* Manga Repostera como grupo SVG animado en el mismo sistema de coordenadas */}
+              {animationStage === "drawing" && (
+                <motion.g
+                  initial={{ offsetDistance: "0%", opacity: 1 }}
+                  animate={{ offsetDistance: "100%" }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 1.8, ease: "easeInOut" }}
                   style={{
-                    transform: "translate(-50%, -50%)", // Centra la boquilla en el camino
+                    offsetPath: `path('${creamPath}')`,
+                    offsetRotate: "auto -45deg", // Auto-rotación tangente + inclinación natural del chef
                   }}
                 >
-                  <defs>
-                    <linearGradient id="goldBag" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#FDF3BF" />
-                      <stop offset="50%" stopColor="#E5C414" />
-                      <stop offset="100%" stopColor="#B39200" />
-                    </linearGradient>
-                    <linearGradient id="silverNozzle" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#E5E7EB" />
-                      <stop offset="100%" stopColor="#9CA3AF" />
-                    </linearGradient>
-                  </defs>
-
                   {/* Cuerpo de la Manga Repostera (Cono dorado) */}
                   <path
                     d="M -6,-18 C -15,-40 -25,-75 -28,-95 C -28,-105 -18,-112 0,-112 C 18,-112 28,-105 28,-95 C 25,-75 15,-40 6,-18 Z"
@@ -183,16 +165,16 @@ export default function PipingOverlay({ onComplete }: PipingOverlayProps) {
                     strokeWidth="1"
                   />
 
-                  {/* Boquilla de Estrella Metálica (Extremo termina en 0,0) */}
+                  {/* Boquilla de Estrella Metálica (Extremo termina exactamente en 0,0) */}
                   <path
                     d="M 0,0 L -4,-12 L 4,-12 Z"
                     fill="url(#silverNozzle)"
                     stroke="#6B7280"
                     strokeWidth="0.8"
                   />
-                </svg>
-              </motion.div>
-            )}
+                </motion.g>
+              )}
+            </svg>
 
             {/* Logotipo Central que se revela sutilmente al finalizar el trazo */}
             <AnimatePresence>

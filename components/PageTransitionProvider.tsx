@@ -11,23 +11,7 @@ interface PageTransitionProviderProps {
 
 export default function PageTransitionProvider({ children }: PageTransitionProviderProps) {
   const pathname = usePathname();
-  const [displayPathname, setDisplayPathname] = useState(pathname);
-  const [isTransitioning, setIsTransitioning] = useState(false);
   const [isFirstLoad, setIsFirstLoad] = useState(true);
-
-  useEffect(() => {
-    // Si la ruta cambia y no estamos ya en proceso de transición, activamos el telón
-    if (pathname !== displayPathname) {
-      setIsTransitioning(true);
-    }
-  }, [pathname, displayPathname]);
-
-  const handleTransitionComplete = () => {
-    // Al completarse el trazado de crema, intercambiamos la página trasera y cerramos el telón
-    setDisplayPathname(pathname);
-    setIsTransitioning(false);
-    setIsFirstLoad(false);
-  };
 
   const handleFirstLoadComplete = () => {
     setIsFirstLoad(false);
@@ -39,23 +23,17 @@ export default function PageTransitionProvider({ children }: PageTransitionProvi
       {isFirstLoad && (
         <PipingOverlay onComplete={handleFirstLoadComplete} />
       )}
-
-      {/* Telón de Transición de Escudillado (En cambios de páginas posteriores) */}
-      {!isFirstLoad && isTransitioning && (
-        <PipingOverlay onComplete={handleTransitionComplete} />
-      )}
       
       {/* Contenedor de páginas de Next.js con transición suave de entrada/salida.
-          Usamos displayPathname como clave para mantener la página previa visible por debajo del 
-          telón oscuro durante el escudillado de crema, evitando saltos bruscos. */}
+          Usamos la ruta actual como clave para una transición rápida, elegante e instantánea. */}
       <AnimatePresence mode="wait">
         <motion.div
-          key={displayPathname}
-          initial={{ opacity: 0, y: 15 }}
+          key={pathname}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -15 }}
+          exit={{ opacity: 0, y: -10 }}
           transition={{ 
-            duration: 0.6, 
+            duration: 0.35, 
             ease: [0.16, 1, 0.3, 1] 
           }}
           className="w-full min-h-screen"
