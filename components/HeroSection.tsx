@@ -41,27 +41,29 @@ export default function HeroSection() {
 
   return (
     <section className="relative w-full min-h-screen flex flex-col items-center justify-between bg-brand-bg text-brand-cream overflow-hidden px-6 py-8 md:px-12 md:py-12">
-      {/* 1. Fondo inmersivo con video de dulces y estabilización óptica web */}
+      {/* 1. Fondo inmersivo preparado para assets multimedia futuros (video/imagen de fondo) */}
       <div className="absolute inset-0 z-0">
         {/* Fondo base oscuro absoluto con gradiente radial de lujo */}
         <div className="absolute inset-0 bg-dark-radial" />
         
-        {/* Video atmosférico de dulces (con escala, atenuación y luminosidad para mitigar inestabilidad y ruido) */}
+        {/* Resplandor dorado radial central y sutil para emular iluminación de galería de arte */}
+        <div className="absolute inset-0 bg-gold-radial-glow opacity-80" />
+
+        {/* Cuadrícula geométrica sutil para reflejar simetría matemática */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(229,196,20,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(229,196,20,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] md:bg-[size:6rem_6rem]" />
+
+        {/* Marcador de posición para video/imagen de fondo futura */}
+        {/* 
         <video 
           autoPlay 
           muted 
           loop 
           playsInline 
-          className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-luminosity scale-[1.05] pointer-events-none"
+          className="absolute inset-0 w-full h-full object-cover opacity-30 z-0 mix-blend-luminosity"
         >
-          <source src="/videos/dulces_inicio.mp4" type="video/mp4" />
-        </video>
-
-        {/* Resplandor dorado radial central (por encima del video para fundir e iluminar el centro) */}
-        <div className="absolute inset-0 bg-gold-radial-glow opacity-80 pointer-events-none" />
-
-        {/* Cuadrícula geométrica de alta precisión (sirve como ancla visual estática sobre el video) */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(229,196,20,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(229,196,20,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] md:bg-[size:6rem_6rem] pointer-events-none" />
+          <source src="/videos/hero-bakery-draft.mp4" type="video/mp4" />
+        </video> 
+        */}
       </div>
 
       {/* 2. Espaciador Superior Simétrico para compensar el Navbar */}
