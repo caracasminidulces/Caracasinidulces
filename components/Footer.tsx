@@ -33,6 +33,9 @@ export default function Footer() {
           <Link href="/dulces" className="hover:text-brand-gold transition-colors duration-300">
             Dulces
           </Link>
+          <Link href="/eventos" className="hover:text-brand-gold transition-colors duration-300">
+            Eventos
+          </Link>
           <Link href="/repostera" className="hover:text-brand-gold transition-colors duration-300">
             Victoria
           </Link>

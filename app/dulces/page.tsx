@@ -3,72 +3,52 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-// Definición de las colecciones de dulces con descripciones sensoriales irresistibles
+// Definición de las colecciones de dulces reales con descripciones sensoriales irresistibles
 const colecciones = [
   {
-    titulo: "Mini Dulces de Gala",
-    descripcion: "Bocados sofisticados y delicados diseñados para eventos memorables. Texturas y sabores intensos concentrados en una porción perfecta.",
+    titulo: "Colección de Galletas & Bocados Finos",
+    descripcion: "Crujientes, melosos y tradicionales. Creaciones artesanales horneadas con esmero para encantar en cualquier momento del día.",
     items: [
       {
-        nombre: "Trufa Real de Avellana",
-        descripcion: "Ganache sedosa de chocolate belga al 70% infusionada con licor de avellanas, cubierta por una fina capa de oro comestible de 24 quilates.",
-        textura: "Terciopelo fundente con un corazón crujiente",
-        imagen: "/images/dulces/trufa.jpg",
-        categoria: "Gala"
+        nombre: "Polvorosas Imperiales",
+        descripcion: "Tradicionales polvorosas caraqueñas que se deshacen delicadamente en el paladar. Elaboradas con un toque sutil de vainilla bourbon y espolvoreadas con azúcar fina.",
+        textura: "Desmoronamiento suave y fundente al instante",
+        imagen: "/images/dulces/polvorosas.png",
+        categoria: "Bocados"
       },
       {
-        nombre: "Mini Pavlova de Frutos Rojos",
-        descripcion: "Nido de merengue crujiente por fuera y suave como malvavisco por dentro, coronado con crema montada de vainilla y frutos rojos frescos de estación.",
-        textura: "Crujiente de merengue con ligereza de crema",
-        imagen: "/images/dulces/pavlova.jpg",
-        categoria: "Gala"
+        nombre: "Brookies Tentación",
+        descripcion: "La fusión definitiva de dos mundos: una base densa y húmeda de brownie de chocolate belga fusionada con una cubierta crocante de galleta con chispas de chocolate.",
+        textura: "Corazón súper meloso con superficie crujiente",
+        imagen: "/images/dulces/brookies.png",
+        categoria: "Bocados"
       },
       {
-        nombre: "Tartaleta de Limón y Albahaca",
-        descripcion: "Masa sablé ultra crujiente rellena de una crema untuosa y ácida de limón natural con un sutil toque de albahaca fresca, coronada con merengue italiano dorado.",
-        textura: "Cremosa y cítrica con masa crocante",
-        imagen: "/images/dulces/tartaleta-limon.jpg",
-        categoria: "Gala"
+        nombre: "Craqueladas de Chocolate",
+        descripcion: "Exquisitas galletas de chocolate intenso agrietadas con una generosa y elegante nevada de azúcar glas, presentadas en su exclusiva caja de presentación con lazo dorado.",
+        textura: "Corteza crujiente con centro denso tipo fudge",
+        imagen: "/images/dulces/craqueladas.png",
+        categoria: "Bocados"
       }
     ]
   },
   {
-    titulo: "Pastelería de Diseño e Individuales",
-    descripcion: "Obras artísticas individuales donde el sabor espectacular se encuentra con un diseño visual minimalista e impactante.",
+    titulo: "Colección de Pavlovas",
+    descripcion: "La máxima expresión del merengue artesanal. Ligereza, frescura y dulzura en perfecta armonía visual y sensorial.",
     items: [
       {
-        nombre: "Domo de Chocolate y Frambuesa",
-        descripcion: "Mousse brillante y untuosa de chocolate amargo que oculta un corazón ácido de coulis de frambuesa silvestre, asentado sobre un bizcocho húmedo de almendras.",
-        textura: "Espejo brillante y mousse aireada",
-        imagen: "/images/dulces/domo-chocolate.jpg",
-        categoria: "Individual"
+        nombre: "Mini Pavlova de Gala",
+        descripcion: "Elegantes bocados de merengue horneado lentamente, rellenos con una suave corona de crema batida y fresas frescas, o dulce de leche repostero con un toque crocante de nueces.",
+        textura: "Merengue etéreo y crujiente con la suavidad de la crema",
+        imagen: "/images/dulces/minipavlova.png",
+        categoria: "Pavlovas"
       },
       {
-        nombre: "Eclair de Pistacho y Azahar",
-        descripcion: "Masa choux perfectamente horneada, rellena de una untuosa crema pastelera de pistacho siciliano y un perfume sutil de agua de azahar.",
-        textura: "Masa ligera con relleno denso y aromático",
-        imagen: "/images/dulces/eclair-pistacho.jpg",
-        categoria: "Individual"
-      }
-    ]
-  },
-  {
-    titulo: "Tortas de Autor & Modelado Temático",
-    descripcion: "Creaciones personalizadas exclusivas de Victoria. Pasteles con alma, modelados a mano capa por capa para materializar el concepto de tus sueños.",
-    items: [
-      {
-        nombre: "Pastel Minimalista de Bodas",
-        descripcion: "Estructura impecable de bordes perfectos, decorada con flores modeladas a mano pétalo a pétalo en pasta de azúcar. Bizcocho de vainilla bourbon con praliné de nuez.",
-        textura: "Bizcocho súper húmedo con crema sedosa de mantequilla",
-        imagen: "/images/dulces/torta-boda.jpg",
-        categoria: "Autor"
-      },
-      {
-        nombre: "Tarta Temática Infantil Fantasía",
-        descripcion: "Personajes y estructuras tridimensionales esculpidas completamente a mano por Victoria en fondant comestible. Bizcocho de chocolate fudge con dulce de leche.",
-        textura: "Fudge denso y esponjoso con detalles de azúcar modelada",
-        imagen: "/images/dulces/torta-fantasia.jpg",
-        categoria: "Autor"
+        nombre: "Gran Pavlova de Autor",
+        descripcion: "Una majestuosa obra de arte para compartir. Disco de merengue artesanal crujiente, coronado con abundante crema batida, finas láminas de melocotón y una deslumbrante flor de fresas naturales.",
+        textura: "Contraste sublime entre fruta fresca, crema sedosa y merengue crujiente",
+        imagen: "/images/dulces/pavlova.png",
+        categoria: "Pavlovas"
       }
     ]
   }
@@ -121,7 +101,7 @@ export default function DulcesPage() {
 
         {/* Listado de Colecciones */}
         <div className="w-full flex flex-col gap-24">
-          {colecciones.map((coleccion, indexIndex) => (
+          {colecciones.map((coleccion) => (
             <motion.section
               key={coleccion.titulo}
               variants={containerVariants}
@@ -142,42 +122,24 @@ export default function DulcesPage() {
 
               {/* Grid de Dulces */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {coleccion.items.map((item, itemIndex) => (
+                {coleccion.items.map((item) => (
                   <motion.div
                     key={item.nombre}
                     variants={itemVariants}
-                    className="group relative flex flex-col bg-[#050505] border border-brand-gold/10 hover:border-brand-gold/40 transition-all duration-500 ease-luxury p-6 rounded-none"
+                    className="group relative flex flex-col bg-[#050505] border border-brand-gold/10 hover:border-brand-gold/40 transition-all duration-500 p-6 rounded-none"
                   >
-                    {/* Contenedor de la Imagen (Preparado para la foto real del usuario) */}
+                    {/* Contenedor de la Imagen Real del Producto */}
                     <div className="relative w-full aspect-square bg-[#0c0c0c] border border-brand-gold/5 flex items-center justify-center overflow-hidden mb-6">
-                      
-                      {/* En el futuro, cuando subas la foto, esta etiqueta Image se mostrará perfectamente */}
-                      {/* 
                       <Image
                         src={item.imagen}
                         alt={item.nombre}
                         fill
-                        className="object-cover transition-transform duration-750 ease-luxury group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-750 ease-in-out group-hover:scale-105"
                       />
-                      */}
-
-                      {/* Diseñamos un marcador de posición de súper lujo con gradiente y tipografía dorada */}
-                      <div className="absolute inset-0 bg-gradient-to-tr from-[#020202] via-[#080808] to-[#121212] flex flex-col items-center justify-center text-center p-6 transition-all duration-500 group-hover:bg-[#030303]/90">
-                        <div className="absolute inset-0 bg-gold-radial-glow opacity-30 group-hover:opacity-60 transition-opacity duration-500" />
-                        
-                        {/* Icono decorativo de repostería minimalista en SVG */}
-                        <svg className="w-10 h-10 stroke-brand-gold/40 group-hover:stroke-brand-gold/80 fill-none mb-4 transition-colors duration-500" viewBox="0 0 24 24" strokeWidth="1">
-                          <path d="M12 21a9 9 0 0 0 9-9c0-3-2-6-9-10-7 4-9 7-9 10a9 9 0 0 0 9 9z" />
-                          <path d="M12 8v8M8 12h8" />
-                        </svg>
-
-                        <span className="text-[10px] tracking-[0.2em] text-brand-gold-light uppercase font-semibold">
-                          Fotografía Real
-                        </span>
-                        <span className="text-[9px] tracking-[0.1em] text-brand-cream/40 uppercase mt-1">
-                          (Pronto Disponible)
-                        </span>
-                      </div>
+                      
+                      {/* Efecto de degradado premium sobre la foto */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#010101]/60 via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none" />
                     </div>
 
                     {/* Información del dulce - Orientación Gourmet */}

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function ReposteraPage() {
   const containerVariants = {
@@ -33,7 +34,7 @@ export default function ReposteraPage() {
           animate="visible"
           className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center"
         >
-          {/* 1. Izquierda: Marco Editorial para Fotografía (Preparado para la foto de Victoria) */}
+          {/* 1. Izquierda: Marco Editorial para Fotografía (Preservando el contorno elegante) */}
           <motion.div
             variants={itemVariants}
             className="lg:col-span-5 flex justify-center"
@@ -41,21 +42,19 @@ export default function ReposteraPage() {
             <div className="relative w-full max-w-[360px] aspect-[3/4] border border-brand-gold/20 p-3 bg-transparent">
               <div className="absolute -inset-1 border border-brand-gold/10 pointer-events-none" />
               
-              {/* Contenedor del retrato artístico */}
-              <div className="relative w-full h-full bg-gradient-to-b from-[#080808] to-[#141414] overflow-hidden flex flex-col items-center justify-center text-center p-6">
-                <div className="absolute inset-0 bg-gold-radial-glow opacity-30" />
+              {/* Contenedor del retrato artístico con la imagen editada por IA */}
+              <div className="relative w-full h-full overflow-hidden">
+                <Image
+                  src="/images/victoria_profile.png"
+                  alt="Victoria, repostera artística de Caracas Mini Dulces"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 360px"
+                  className="object-cover transition-transform duration-700 hover:scale-105"
+                  priority
+                />
                 
-                {/* SVG Decorativo para simbolizar el arte manual */}
-                <svg className="w-12 h-12 stroke-brand-gold/40 fill-none mb-4" viewBox="0 0 24 24" strokeWidth="1" strokeLinecap="round">
-                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                </svg>
-
-                <span className="text-[11px] tracking-[0.2em] text-brand-gold uppercase font-semibold">
-                  Victoria
-                </span>
-                <span className="text-[9px] tracking-[0.1em] text-brand-cream/40 uppercase mt-1">
-                  (Fotografía en el Taller)
-                </span>
+                {/* Overlay dorado degradado muy sutil para homogeneizar los bordes con la web */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#010101]/40 via-transparent to-transparent pointer-events-none" />
               </div>
             </div>
           </motion.div>
