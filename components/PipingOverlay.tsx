@@ -12,33 +12,32 @@ export default function PipingOverlay({ onComplete }: PipingOverlayProps) {
   const [animationStage, setAnimationStage] = useState<"idle" | "drawing" | "reveal" | "fadeOut">("idle");
   const [isMobile, setIsMobile] = useState(false);
 
-  // Definición del trazado SVG simétrico y elegante en un lienzo de 800x600.
-  // Termina exactamente en el centro (400, 300).
-  const creamPath = "M 80,300 C 150,120 280,120 350,250 C 420,380 550,380 620,250 C 670,140 580,70 480,100 C 370,130 300,280 380,360 C 440,420 520,350 490,260 Q 460,180 360,200 C 380,290 C 390,320 415,320 410,295 C 405,270 401,270 400,300";
+  // Exact vector path of the original logo's outer boundary (1343 x 897 coordinate space)
+  const logoOutlinePath = "M 1119,25 L 1134,25 L 1149,29 L 1164,37 L 1178,47 L 1193,36 L 1208,29 L 1223,26 L 1238,26 L 1253,30 L 1268,37 L 1280,50 L 1288,65 L 1291,80 L 1295,95 L 1308,110 L 1315,125 L 1318,140 L 1317,155 L 1312,170 L 1301,185 L 1286,197 L 1277,208 L 1278,223 L 1276,238 L 1271,253 L 1264,268 L 1255,283 L 1243,298 L 1231,313 L 1220,328 L 1208,343 L 1196,358 L 1184,373 L 1173,388 L 1161,403 L 1151,418 L 1141,433 L 1130,448 L 1124,463 L 1117,478 L 1109,493 L 1100,508 L 1090,523 L 1078,538 L 1064,552 L 1049,564 L 1034,573 L 1019,580 L 1004,585 L 989,586 L 974,585 L 959,581 L 944,579 L 929,588 L 914,594 L 899,597 L 884,598 L 869,596 L 854,592 L 839,587 L 824,597 L 809,605 L 794,610 L 779,612 L 764,612 L 749,610 L 734,605 L 719,612 L 704,620 L 689,624 L 674,624 L 659,622 L 644,624 L 629,630 L 614,633 L 599,633 L 584,630 L 569,635 L 554,640 L 539,642 L 524,641 L 512,646 L 506,661 L 499,676 L 490,691 L 481,706 L 470,721 L 458,736 L 445,751 L 431,766 L 416,780 L 401,793 L 386,804 L 371,814 L 356,824 L 341,832 L 326,840 L 311,847 L 296,853 L 281,858 L 266,863 L 251,866 L 236,869 L 221,871 L 206,872 L 191,872 L 176,871 L 161,868 L 146,864 L 131,857 L 116,847 L 101,833 L 92,818 L 85,803 L 80,788 L 78,773 L 77,758 L 79,743 L 83,728 L 89,713 L 96,698 L 107,683 L 119,668 L 134,653 L 149,640 L 139,635 L 124,636 L 109,635 L 94,631 L 79,624 L 64,613 L 50,598 L 41,583 L 34,568 L 30,553 L 27,538 L 26,523 L 26,508 L 27,493 L 29,478 L 32,463 L 36,448 L 41,433 L 46,418 L 53,403 L 61,388 L 70,373 L 80,358 L 91,343 L 103,328 L 118,313 L 133,299 L 148,287 L 163,276 L 178,267 L 193,258 L 208,251 L 223,245 L 238,240 L 253,235 L 268,232 L 283,228 L 298,226 L 313,224 L 328,223 L 343,223 L 358,224 L 373,225 L 388,228 L 403,232 L 418,237 L 433,245 L 448,253 L 463,265 L 478,276 L 489,261 L 503,247 L 518,237 L 533,231 L 548,229 L 563,229 L 578,233 L 593,241 L 608,243 L 623,236 L 638,234 L 653,235 L 668,241 L 683,239 L 698,237 L 713,236 L 728,235 L 743,231 L 758,231 L 773,228 L 788,226 L 803,219 L 818,214 L 833,213 L 848,216 L 863,221 L 878,215 L 893,214 L 908,212 L 921,206 L 935,192 L 950,186 L 965,184 L 980,185 L 995,191 L 1010,182 L 1025,176 L 1038,172 L 1046,157 L 1056,142 L 1070,128 L 1071,113 L 1070,98 L 1070,83 L 1072,68 L 1079,53 L 1091,38 L 1106,29 L 1119,25 Z";
 
   useEffect(() => {
     const mobileCheck = typeof window !== "undefined" && window.innerWidth < 768;
     setIsMobile(mobileCheck);
 
-    // 1. Iniciar el trazado/escudillado de crema o spinner
+    // Iniciar la animación del dibujo vectorial del logo
     setAnimationStage("drawing");
 
-    // Timings dinámicos según el tipo de dispositivo
-    const revealDelay = mobileCheck ? 800 : 1800;
-    const fadeOutDelay = mobileCheck ? 1600 : 3000;
-    const completeDelay = mobileCheck ? 2200 : 3600;
+    // Tiempos optimizados de la coreografía de gala
+    const revealDelay = mobileCheck ? 800 : 1500;
+    const fadeOutDelay = mobileCheck ? 1600 : 2800;
+    const completeDelay = mobileCheck ? 2200 : 3400;
 
-    // 2. Revelar el logotipo central
+    // Temporizador para revelar el logo original a color
     const revealTimer = setTimeout(() => {
       setAnimationStage("reveal");
     }, revealDelay);
 
-    // 3. Iniciar la retirada del telón/overlay
+    // Temporizador para desvanecer el telón oscuro
     const fadeOutTimer = setTimeout(() => {
       setAnimationStage("fadeOut");
     }, fadeOutDelay);
 
-    // 4. Finalizar por completo la transición y desmontar
+    // Temporizador para desmontar el overlay
     const completeTimer = setTimeout(() => {
       onComplete();
     }, completeDelay);
@@ -65,203 +64,109 @@ export default function PipingOverlay({ onComplete }: PipingOverlayProps) {
           {/* Grid geométrico sutil para reflejar simetría */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(229,196,20,0.01)_1px,transparent_1px),linear-gradient(to_bottom,rgba(229,196,20,0.01)_1px,transparent_1px)] bg-[size:3rem_3rem] opacity-40 pointer-events-none" />
 
-          {/* Lienzo Principal de Transición */}
-          <div className="relative w-full max-w-[650px] aspect-[4/3] flex items-center justify-center p-4">
-            {isMobile ? (
-              animationStage === "drawing" && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="absolute z-20 flex flex-col items-center justify-center"
-                >
-                  <svg width="100" height="100" viewBox="0 0 100 100" className="w-20 h-20">
-                    <defs>
-                      <linearGradient id="goldSpinner" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#FDF3BF" />
-                        <stop offset="50%" stopColor="#E5C414" />
-                        <stop offset="100%" stopColor="#B39200" />
-                      </linearGradient>
-                    </defs>
-                    <motion.circle
-                      cx="50"
-                      cy="50"
-                      r="40"
-                      fill="none"
-                      stroke="url(#goldSpinner)"
-                      strokeWidth="4"
-                      strokeLinecap="round"
-                      strokeDasharray="160 80"
-                      animate={{ rotate: 360 }}
-                      transition={{
-                        repeat: Infinity,
-                        duration: 1.2,
-                        ease: "linear"
-                      }}
-                      className="origin-center"
-                    />
-                  </svg>
-                  <span className="text-[9px] uppercase tracking-[0.25em] text-brand-gold font-medium mt-4 animate-pulse">
-                    Preparando dulzura...
-                  </span>
-                </motion.div>
-              )
-            ) : (
-              <svg
-                viewBox="0 0 800 600"
-                className="absolute inset-0 w-full h-full pointer-events-none z-10"
-              >
-                {/* Filtro de brillo/glow dorado para simular volumen y relieve 3D de la crema */}
-                <defs>
-                  <filter id="creamGlow" x="-20%" y="-20%" width="140%" height="140%">
-                    <feGaussianBlur stdDeviation="6" result="blur" />
-                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                  </filter>
-                  <linearGradient id="goldBag" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#FDF3BF" />
-                    <stop offset="50%" stopColor="#E5C414" />
-                    <stop offset="100%" stopColor="#B39200" />
-                  </linearGradient>
-                  <linearGradient id="silverNozzle" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#E5E7EB" />
-                    <stop offset="100%" stopColor="#9CA3AF" />
-                  </linearGradient>
-                </defs>
+          {/* Lienzo Principal de Transición con la relación de aspecto del Logotipo */}
+          <div className="relative w-full max-w-[650px] aspect-[1343/897] flex items-center justify-center p-4">
+            
+            {/* Dibujo Vectorial del Contorno del Logotipo */}
+            <svg
+              viewBox="0 0 1343 897"
+              className="absolute inset-0 w-full h-full pointer-events-none z-10"
+            >
+              <defs>
+                <linearGradient id="goldStrokeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#FDF3BF" />
+                  <stop offset="50%" stopColor="#E5C414" />
+                  <stop offset="100%" stopColor="#B39200" />
+                </linearGradient>
+                <filter id="logoStrokeGlow" x="-10%" y="-10%" width="120%" height="120%">
+                  <feGaussianBlur stdDeviation="8" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+              </defs>
 
-                {/* Trazado 1 (Sombra de relieve dorada inferior) */}
-                <motion.path
-                  d={creamPath}
-                  fill="none"
-                  stroke="#E5C414"
-                  strokeWidth="10"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  opacity="0.35"
-                  filter="url(#creamGlow)"
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: animationStage !== "idle" ? 1 : 0 }}
-                  transition={{ duration: 1.8, ease: "easeInOut" }}
-                />
+              {/* Capa 1: Sombra/Relieve dorado trasero difuminado */}
+              <motion.path
+                d={logoOutlinePath}
+                fill="none"
+                stroke="#E5C414"
+                strokeWidth={isMobile ? "4" : "10"}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                opacity="0.3"
+                filter="url(#logoStrokeGlow)"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: animationStage !== "idle" ? 1 : 0 }}
+                transition={{ duration: isMobile ? 1.0 : 1.8, ease: "easeInOut" }}
+              />
 
-                {/* Trazado 2 (Cuerpo de crema dorada suave intermedia) */}
-                <motion.path
-                  d={creamPath}
-                  fill="none"
-                  stroke="#DBC975"
-                  strokeWidth="6"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  opacity="0.8"
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: animationStage !== "idle" ? 1 : 0 }}
-                  transition={{ duration: 1.8, ease: "easeInOut" }}
-                />
+              {/* Capa 2: Cuerpo central dorado metálico */}
+              <motion.path
+                d={logoOutlinePath}
+                fill="none"
+                stroke="url(#goldStrokeGradient)"
+                strokeWidth={isMobile ? "2" : "5"}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                opacity="0.75"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: animationStage !== "idle" ? 1 : 0 }}
+                transition={{ duration: isMobile ? 1.0 : 1.8, ease: "easeInOut" }}
+              />
 
-                {/* Trazado 3 (Brillo de crema clara superior - Tridimensionalidad) */}
-                <motion.path
-                  d={creamPath}
-                  fill="none"
-                  stroke="#FDF3BF"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: animationStage !== "idle" ? 1 : 0 }}
-                  transition={{ duration: 1.8, ease: "easeInOut" }}
-                />
+              {/* Capa 3: Brillo superior claro para tridimensionalidad */}
+              <motion.path
+                d={logoOutlinePath}
+                fill="none"
+                stroke="#FDF3BF"
+                strokeWidth={isMobile ? "1" : "2"}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                opacity="0.9"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: animationStage !== "idle" ? 1 : 0 }}
+                transition={{ duration: isMobile ? 1.0 : 1.8, ease: "easeInOut" }}
+              />
+            </svg>
 
-                {/* Manga Repostera como grupo SVG animado en el mismo sistema de coordenadas */}
-                {animationStage === "drawing" && (
-                  <motion.g
-                    initial={{ offsetDistance: "0%", opacity: 1 }}
-                    animate={{ offsetDistance: "100%" }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 1.8, ease: "easeInOut" }}
-                    style={{
-                      offsetPath: `path('${creamPath}')`,
-                      offsetRotate: "auto -45deg", // Auto-rotación tangente + inclinación natural del chef
-                    }}
-                  >
-                    {/* Cuerpo de la Manga Repostera (Cono dorado) */}
-                    <path
-                      d="M -6,-18 C -15,-40 -25,-75 -28,-95 C -28,-105 -18,-112 0,-112 C 18,-112 28,-105 28,-95 C 25,-75 15,-40 6,-18 Z"
-                      fill="url(#goldBag)"
-                      stroke="#DBC975"
-                      strokeWidth="1.5"
-                    />
-
-                    {/* Detalle de pliegues en la manga */}
-                    <path
-                      d="M -24,-85 Q 0,-75 24,-85"
-                      fill="none"
-                      stroke="#B39200"
-                      strokeWidth="1"
-                      opacity="0.5"
-                    />
-                    <path
-                      d="M -16,-55 Q 0,-48 16,-55"
-                      fill="none"
-                      stroke="#B39200"
-                      strokeWidth="1"
-                      opacity="0.5"
-                    />
-
-                    {/* Collar de acople */}
-                    <path
-                      d="M -5,-12 L 5,-12 L 6,-18 L -6,-18 Z"
-                      fill="#F3F4F6"
-                      stroke="#DBC975"
-                      strokeWidth="1"
-                    />
-
-                    {/* Boquilla de Estrella Metálica (Extremo termina exactamente en 0,0) */}
-                    <path
-                      d="M 0,0 L -4,-12 L 4,-12 Z"
-                      fill="url(#silverNozzle)"
-                      stroke="#6B7280"
-                      strokeWidth="0.8"
-                    />
-                  </motion.g>
-                )}
-              </svg>
-            )}
-
-            {/* Logotipo Central que se revela sutilmente al finalizar el trazo */}
+            {/* Logotipo Original a color que se revela de forma pixel-perfect en el contorno */}
             <AnimatePresence>
               {animationStage === "reveal" && (
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.8, y: -10 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 1.1 }}
+                  initial={{ opacity: 0, scale: 0.94 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 1.06 }}
                   transition={{
-                    duration: 0.8,
+                    duration: isMobile ? 0.6 : 0.8,
                     ease: [0.16, 1, 0.3, 1],
                   }}
-                  className="absolute z-30 flex flex-col items-center justify-center"
+                  className="absolute inset-0 z-20 flex items-center justify-center p-4"
                 >
-                  {/* Halo dorado trasero resplandeciente en el logo */}
-                  <div className="absolute -inset-10 bg-brand-gold/25 rounded-full blur-3xl opacity-80" />
+                  <div className="relative w-full h-full flex flex-col items-center justify-center">
+                    
+                    {/* Halo de luz dorada trasera resplandeciente */}
+                    <div className="absolute -inset-10 bg-brand-gold/15 rounded-full blur-3xl opacity-80 pointer-events-none" />
 
-                  <div className="relative w-48 sm:w-60 h-28 sm:h-36 flex items-center justify-center">
-                    <Image
-                      src="/images/logo.png"
-                      alt="Caracas Mini Dulces Logo"
-                      fill
-                      sizes="240px"
-                      className="object-contain drop-shadow-[0_0_25px_rgba(229,196,20,0.3)]"
-                      priority
-                    />
+                    <div className="relative w-full h-full max-w-[90%] max-h-[90%]">
+                      <Image
+                        src="/images/logo.png"
+                        alt="Caracas Mini Dulces Logo"
+                        fill
+                        sizes="(max-w-md) 100vw, 600px"
+                        className="object-contain drop-shadow-[0_0_30px_rgba(229,196,20,0.3)]"
+                        priority
+                      />
+                    </div>
+
+                    {/* Texto de lujo debajo del logo, se revela suavemente */}
+                    <motion.span
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 0.8, y: 0 }}
+                      transition={{ delay: isMobile ? 0.2 : 0.4, duration: 0.8 }}
+                      className="absolute bottom-4 sm:bottom-8 text-[9px] sm:text-xs uppercase tracking-[0.3em] text-brand-gold font-semibold text-center whitespace-nowrap"
+                    >
+                      Repostería de Autor
+                    </motion.span>
                   </div>
-
-                  {/* Texto de lujo debajo del logo */}
-                  <motion.span
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 0.8, y: 0 }}
-                    transition={{ delay: 0.4, duration: 0.8 }}
-                    className="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-brand-gold font-semibold mt-4"
-                  >
-                    Repostería de Autor
-                  </motion.span>
                 </motion.div>
               )}
             </AnimatePresence>
