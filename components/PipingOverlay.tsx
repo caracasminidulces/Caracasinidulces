@@ -65,7 +65,7 @@ export default function PipingOverlay({ onComplete }: PipingOverlayProps) {
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(229,196,20,0.01)_1px,transparent_1px),linear-gradient(to_bottom,rgba(229,196,20,0.01)_1px,transparent_1px)] bg-[size:3rem_3rem] opacity-40 pointer-events-none" />
 
           {/* Lienzo Principal de Transición con la relación de aspecto del Logotipo */}
-          <div className="relative w-full max-w-[650px] aspect-[1343/897] flex items-center justify-center p-4">
+          <div className="relative w-[90%] max-w-[600px] aspect-[1343/897]">
             
             {/* Dibujo Vectorial del Contorno del Logotipo */}
             <svg
@@ -139,34 +139,32 @@ export default function PipingOverlay({ onComplete }: PipingOverlayProps) {
                     duration: isMobile ? 0.6 : 0.8,
                     ease: [0.16, 1, 0.3, 1],
                   }}
-                  className="absolute inset-0 z-20 flex items-center justify-center p-4"
+                  className="absolute inset-0 z-20 pointer-events-none"
                 >
-                  <div className="relative w-full h-full flex flex-col items-center justify-center">
-                    
-                    {/* Halo de luz dorada trasera resplandeciente */}
-                    <div className="absolute -inset-10 bg-brand-gold/15 rounded-full blur-3xl opacity-80 pointer-events-none" />
+                  {/* Halo de luz dorada trasera resplandeciente */}
+                  <div className="absolute -inset-10 bg-brand-gold/15 rounded-full blur-3xl opacity-80 pointer-events-none" />
 
-                    <div className="relative w-full h-full max-w-[90%] max-h-[90%]">
-                      <Image
-                        src="/images/logo.png"
-                        alt="Caracas Mini Dulces Logo"
-                        fill
-                        sizes="(max-w-md) 100vw, 600px"
-                        className="object-contain drop-shadow-[0_0_30px_rgba(229,196,20,0.3)]"
-                        priority
-                      />
-                    </div>
-
-                    {/* Texto de lujo debajo del logo, se revela suavemente */}
-                    <motion.span
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 0.8, y: 0 }}
-                      transition={{ delay: isMobile ? 0.2 : 0.4, duration: 0.8 }}
-                      className="absolute bottom-4 sm:bottom-8 text-[9px] sm:text-xs uppercase tracking-[0.3em] text-brand-gold font-semibold text-center whitespace-nowrap"
-                    >
-                      Repostería de Autor
-                    </motion.span>
+                  {/* Contenedor exacto de la imagen */}
+                  <div className="relative w-full h-full">
+                    <Image
+                      src="/images/logo.png"
+                      alt="Caracas Mini Dulces Logo"
+                      fill
+                      sizes="(max-w-md) 100vw, 600px"
+                      className="object-contain drop-shadow-[0_0_30px_rgba(229,196,20,0.35)]"
+                      priority
+                    />
                   </div>
+
+                  {/* Texto de lujo debajo del logo, posicionado absolutamente fuera de la caja del logo */}
+                  <motion.span
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 0.8, y: 0 }}
+                    transition={{ delay: isMobile ? 0.2 : 0.4, duration: 0.8 }}
+                    className="absolute -bottom-10 left-1/2 -translate-x-1/2 text-[9px] sm:text-xs uppercase tracking-[0.3em] text-brand-gold font-semibold text-center whitespace-nowrap"
+                  >
+                    Repostería de Autor
+                  </motion.span>
                 </motion.div>
               )}
             </AnimatePresence>
