@@ -23,8 +23,8 @@ export default function ContactoPage() {
   const contactInfo = [
     {
       tipo: "Correo Electrónico",
-      valor: "victoria@caracasminidulces.com",
-      link: "mailto:victoria@caracasminidulces.com",
+      valor: "minidulces1@gmail.com",
+      link: "mailto:minidulces1@gmail.com",
       descripcion: "Escríbeme para hacerme llegar tus ideas, paletas de colores y referencias de diseño para tu evento.",
       icono: (
         <svg className="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24" strokeWidth="1.2">
@@ -35,12 +35,25 @@ export default function ContactoPage() {
     },
     {
       tipo: "Teléfono & WhatsApp",
-      valor: "+58 412 000 0000",
-      link: "https://wa.me/584120000000",
+      valor: "+58 414-1835422",
+      link: "https://wa.me/584141835422",
       descripcion: "Hablemos de forma directa para agendar fechas y cotizar el modelado de tus postres personalizados.",
       icono: (
         <svg className="w-6 h-6 stroke-current fill-none" viewBox="0 0 24 24" strokeWidth="1.2">
           <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+        </svg>
+      )
+    },
+    {
+      tipo: "Instagram",
+      valor: "@caracasminidulces",
+      link: "https://www.instagram.com/caracasminidulces?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+      descripcion: "Sígueme en Instagram para ver las últimas creaciones en tiempo real y nuestro catálogo diario.",
+      icono: (
+        <svg className="w-6 h-6 stroke-current fill-none" viewBox="0 0 24 24" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
         </svg>
       )
     }
@@ -51,7 +64,7 @@ export default function ContactoPage() {
       {/* Resplandor dorado decorativo en el centro */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-gold/5 blur-3xl pointer-events-none rounded-full" />
 
-      <div className="relative z-10 max-w-4xl w-full mx-auto px-6 flex flex-col items-center">
+      <div className="relative z-10 max-w-5xl w-full mx-auto px-6 flex flex-col items-center">
         {/* Cabecera simplificada */}
         <motion.div
           initial={{ opacity: 0, y: -15 }}
@@ -72,12 +85,12 @@ export default function ContactoPage() {
           </p>
         </motion.div>
 
-        {/* Canales de Contacto Simétricos (Grid de 2 columnas equilibrado) */}
+        {/* Canales de Contacto Simétricos (Grid de 3 columnas equilibrado) */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="w-full grid grid-cols-1 md:grid-cols-2 gap-8"
+          className="w-full grid grid-cols-1 md:grid-cols-3 gap-8"
         >
           {contactInfo.map((info) => (
             <motion.a

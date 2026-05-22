@@ -22,20 +22,18 @@ export default function Navbar() {
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className="fixed top-0 left-0 right-0 z-50 w-full px-6 py-4 md:px-12 flex items-center justify-between backdrop-blur-md bg-[#010101]/60 border-b border-brand-gold/10"
     >
-      {/* 1. Izquierda: Logo o Nombre Corto */}
-      <Link href="/" className="flex items-center gap-3 group">
-        <div className="relative w-8 h-8 flex items-center justify-center">
+      {/* 1. Izquierda: Logo */}
+      <Link href="/" className="flex items-center group">
+        <div className="relative h-12 w-16 md:h-14 md:w-20 flex items-center justify-center">
           <Image
             src="/images/logo.png"
-            alt="Mini Logo"
-            width={32}
-            height={32}
+            alt="Caracas Mini Dulces"
+            fill
+            sizes="(max-width: 768px) 64px, 80px"
             className="object-contain transition-transform duration-500 ease-luxury group-hover:scale-110"
+            priority
           />
         </div>
-        <span className="hidden sm:inline font-heading text-xs tracking-[0.2em] text-brand-cream group-hover:text-brand-gold transition-colors duration-300">
-          CARACAS MINI DULCES
-        </span>
       </Link>
 
       {/* 2. Centro: Menú de Navegación Simétrico */}
@@ -68,7 +66,7 @@ export default function Navbar() {
       {/* 3. Derecha: Botón de WhatsApp/Contacto Rápido */}
       <div className="flex items-center">
         <a
-          href="https://wa.me/584120000000" // Enlace genérico de WhatsApp de Venezuela
+          href="https://wa.me/584141835422" // WhatsApp de Caracas Mini Dulces
           target="_blank"
           rel="noopener noreferrer"
           className="hidden md:inline-flex text-[10px] uppercase tracking-[0.2em] px-4 py-2 border border-brand-gold/30 hover:border-brand-gold text-brand-gold hover:text-brand-bg hover:bg-brand-gold transition-all duration-500 ease-luxury"

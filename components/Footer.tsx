@@ -48,7 +48,7 @@ export default function Footer() {
         <div className="flex items-center gap-8">
           {/* Instagram Link */}
           <a
-            href="https://instagram.com/caracasminidulces"
+            href="https://www.instagram.com/caracasminidulces?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 group text-xs uppercase tracking-[0.15em] text-brand-cream/80 hover:text-brand-gold transition-colors duration-300"
@@ -70,7 +70,7 @@ export default function Footer() {
 
           {/* WhatsApp Link */}
           <a
-            href="https://wa.me/584120000000"
+            href="https://wa.me/584141835422"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 group text-xs uppercase tracking-[0.15em] text-brand-cream/80 hover:text-brand-gold transition-colors duration-300"

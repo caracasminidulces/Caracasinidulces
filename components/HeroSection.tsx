@@ -66,27 +66,8 @@ export default function HeroSection() {
         */}
       </div>
 
-      {/* 2. Header Superior - Logotipo Simétrico */}
-      <header className="relative z-10 w-full flex justify-center py-4">
-        <motion.div
-          initial={{ opacity: 0, y: -20, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          className="relative group cursor-pointer"
-        >
-          {/* Sutil halo dorado detrás del logo */}
-          <div className="absolute -inset-4 bg-brand-gold opacity-0 group-hover:opacity-20 rounded-full blur-xl transition-all duration-700 ease-luxury" />
-          
-          <Image
-            src="/images/logo.png"
-            alt="Caracas Mini Dulces Logo"
-            width={180}
-            height={70}
-            priority
-            className="h-16 md:h-20 w-auto object-contain transition-transform duration-750 ease-luxury group-hover:scale-105"
-          />
-        </motion.div>
-      </header>
+      {/* 2. Espaciador Superior Simétrico para compensar el Navbar */}
+      <div className="relative z-10 w-full h-12 md:h-16" />
 
       {/* 3. Contenido Central (Sección Hero) */}
       <motion.div
@@ -95,6 +76,24 @@ export default function HeroSection() {
         animate="visible"
         className="relative z-10 max-w-4xl w-full flex flex-col items-center justify-center text-center my-auto px-4"
       >
+        {/* Logotipo Central Premium (Figura Central de la Marca) */}
+        <motion.div
+          variants={itemVariants}
+          className="relative mb-8 group cursor-pointer flex justify-center"
+        >
+          {/* Halo de luz dorada radial de fondo */}
+          <div className="absolute -inset-10 bg-brand-gold/10 opacity-70 group-hover:opacity-90 rounded-full blur-3xl transition-all duration-1000 ease-luxury" />
+          
+          <Image
+            src="/images/logo.png"
+            alt="Caracas Mini Dulces Logo"
+            width={380}
+            height={160}
+            priority
+            className="h-28 sm:h-36 md:h-44 w-auto object-contain transition-all duration-750 ease-luxury group-hover:scale-105 drop-shadow-[0_0_20px_rgba(229,196,20,0.15)]"
+          />
+        </motion.div>
+
         {/* Subtítulo: Colección exclusiva */}
         <motion.span
           variants={itemVariants}
@@ -106,7 +105,7 @@ export default function HeroSection() {
         {/* Título Principal: Cinzel y de alta gama */}
         <motion.h1
           variants={itemVariants}
-          className="text-4xl md:text-6xl lg:text-7xl font-light tracking-wide text-brand-cream leading-tight mb-8"
+          className="text-4xl md:text-5xl lg:text-6xl font-light tracking-wide text-brand-cream leading-tight mb-8"
         >
           Arte Comestible & <br className="hidden md:block" />
           <span className="text-gold-gradient font-medium italic">Simetría Perfecta</span>
