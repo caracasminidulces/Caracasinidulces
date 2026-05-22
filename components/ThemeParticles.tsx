@@ -45,7 +45,8 @@ export default function ThemeParticles({ theme }: ThemeParticlesProps) {
     
     // Generar partículas aleatorias estables en el cliente
     const symbols = themeSymbols[theme] || ["✨", "✨"];
-    const count = 20; // Reducido ligeramente de 25 a 20 para máximo rendimiento móvil
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    const count = isMobile ? 6 : 20; // Reducido dinámicamente en móvil para máximo rendimiento
     const generated: Particle[] = Array.from({ length: count }).map((_, i) => {
       const isUpward = theme === "san_valentin";
       return {
