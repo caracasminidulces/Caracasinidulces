@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import HeroSection from "../components/HeroSection";
 
@@ -168,17 +169,20 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Columna Frame Visual Placeholder (Symmetrically balanced) */}
+          {/* Columna Frame Visual (Symmetrically balanced) */}
           <div className="md:col-span-5 flex justify-center md:justify-end">
-            <div className="relative w-full max-w-[280px] aspect-[4/5] border border-brand-gold/15 p-2 bg-[#040404] flex items-center justify-center text-center">
-              <div className="absolute inset-0 bg-gold-radial-glow opacity-30" />
-              <div className="flex flex-col items-center p-4">
-                <svg className="w-8 h-8 stroke-brand-gold/30 fill-none mb-3" viewBox="0 0 24 24" strokeWidth="1">
-                  <path d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 10c-4.42 0-8 2.24-8 5v5h16v-5c0-2.76-3.58-5-8-5z" />
-                </svg>
-                <span className="text-[10px] tracking-[0.2em] text-brand-gold uppercase font-semibold">
-                  Victoria de Cerca
-                </span>
+            <div className="relative w-full max-w-[280px] aspect-[4/5] border border-brand-gold/15 p-2 bg-[#040404] overflow-hidden group">
+              <div className="absolute inset-0 bg-gold-radial-glow opacity-25 z-10 pointer-events-none" />
+              <div className="relative w-full h-full overflow-hidden">
+                <Image
+                  src="/images/victoria_inicio.png"
+                  alt="Victoria - Caracas Mini Dulces"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 280px"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#010101]/40 via-transparent to-transparent pointer-events-none z-10" />
               </div>
             </div>
           </div>
