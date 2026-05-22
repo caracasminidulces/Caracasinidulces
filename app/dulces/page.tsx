@@ -106,8 +106,7 @@ export default function DulcesPage() {
               key={coleccion.titulo}
               variants={containerVariants}
               initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
+              animate="visible"
               className="w-full flex flex-col gap-12"
             >
               {/* Encabezado de la Colección */}
