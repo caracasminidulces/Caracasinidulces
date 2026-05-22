@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #010101;
+    color: #FDF3BF;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-cinzel), serif;
+    letter-spacing: 0.05em;
+  }
+}
+
+@layer utilities {
+  /* Gradiente dorado de lujo */
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #C09926 0%, #E5C414 50%, #DBC975 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Efecto de borde fino dorado */
+  .border-gold-subtle {
+    border-color: rgba(229, 196, 20, 0.2);
+  }
+
+  /* Línea divisoria elegante */
+  .gold-divider {
+    height: 1px;
+    background: linear-gradient(90deg, rgba(229, 196, 20, 0) 0%, rgba(229, 196, 20, 0.4) 50%, rgba(229, 196, 20, 0) 100%);
+  }
+
+  /* Animación de brillo metálico */
+  .shimmer-effect {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer-effect::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent 45%,
+      rgba(253, 243, 191, 0.3) 50%,
+      transparent 55%
+    );
+    transform: rotate(45deg);
+    transition: transform 0.5s ease;
+  }
+
+  .shimmer-effect:hover::after {
+    transform: translate(50%, 50%) rotate(45deg);
+  }
+}
