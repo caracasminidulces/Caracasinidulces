@@ -13,7 +13,7 @@ interface ThemeDetail {
   textura: string;
   sabor: string;
   presentacion: string;
-  imagen: string;
+  imagenes: string[];
 }
 
 const mainThemes = [
@@ -33,6 +33,7 @@ const birthdaySubthemes = [
   { id: "encanto", label: "Encanto" },
   { id: "fresita", label: "Fresita" },
   { id: "futbol", label: "Fútbol" },
+  { id: "toystory", label: "Toy Story" },
 ];
 
 const themeDetails: Record<string, ThemeDetail> = {
@@ -44,7 +45,7 @@ const themeDetails: Record<string, ThemeDetail> = {
     textura: "Chocolate crujiente con rellenos melosos y especiados que evocan la calidez hogareña.",
     sabor: "Cacao belga, canela de Ceilán, ralladura de naranja confitada y frutos secos selectos.",
     presentacion: "Elegantes pedestales de madera noble y follaje de pino natural aromático.",
-    imagen: "/images/eventos/navidad.png",
+    imagenes: ["/images/eventos/navidad.png"],
   },
   // Pascuas
   pascuas: {
@@ -54,7 +55,7 @@ const themeDetails: Record<string, ThemeDetail> = {
     textura: "Chocolate con leche de quiebre perfecto y nubes de malvavisco artesanal súper esponjosas.",
     sabor: "Chocolate con leche al 40%, vainilla de Madagascar y malvavisco artesanal perfumado.",
     presentacion: "Caja de regalo blanca de diseño minimalista con visor de acetato de alta resistencia.",
-    imagen: "/images/eventos/pascuas.png",
+    imagenes: ["/images/eventos/pascuas.png"],
   },
   // San Valentín
   san_valentin: {
@@ -64,7 +65,7 @@ const themeDetails: Record<string, ThemeDetail> = {
     textura: "Bizcocho esponjoso y húmedo coronado con una crema de mantequilla de vainilla sedosa y ligera.",
     sabor: "Chocolate negro intenso, extracto puro de vainilla bourbon y fresas silvestres escondidas.",
     presentacion: "Exclusiva caja gourmet Caracas Mini Dulces con detalles de corazones de terciopelo.",
-    imagen: "/images/eventos/san_valentin.png",
+    imagenes: ["/images/eventos/san_valentin.png"],
   },
   // Halloween
   halloween: {
@@ -74,7 +75,7 @@ const themeDetails: Record<string, ThemeDetail> = {
     textura: "Brownie denso y húmedo con superficie craquelada y frosting de vainilla cremoso.",
     sabor: "Doble chocolate fudge, un toque sutil de flor de sal y esencia de calabaza especiada.",
     presentacion: "Caja de diseño exclusivo con detalles de hojas de maíz negras y verdes.",
-    imagen: "/images/eventos/halloween.png",
+    imagenes: ["/images/eventos/halloween.png"],
   },
   // Baby Shower
   babyshower: {
@@ -84,7 +85,7 @@ const themeDetails: Record<string, ThemeDetail> = {
     textura: "Crema suave de chocolate blanco y bizcocho de almendra etéreo.",
     sabor: "Chocolate blanco premium, frambuesa silvestre ácida y praliné de almendras.",
     presentacion: "Pedestal de gala en metal labrado dorado viejo e hilos de seda blanca.",
-    imagen: "/images/eventos/babyshower.png",
+    imagenes: ["/images/eventos/babyshower.png"],
   },
   // Subtemas de Cumpleaños
   hp: {
@@ -94,7 +95,11 @@ const themeDetails: Record<string, ThemeDetail> = {
     textura: "Suave terciopelo de chocolate con un centro de fudge tibio y fundente.",
     sabor: "Cacao belga al 70%, vainilla de Madagascar y un suspiro de caramelo salado.",
     presentacion: "Elegante bandeja imperial de metal dorado labrado con base de espejo.",
-    imagen: "/images/eventos/cumpleanos_hp.png",
+    imagenes: [
+      "/images/eventos/cumpleanos_hp.png",
+      "/images/eventos/cumpleanos_hp_2.png",
+      "/images/eventos/cumpleanos_hp_3.png"
+    ],
   },
   aladdin: {
     titulo: "Cumpleaños: Fantasía de Agrabah",
@@ -103,7 +108,11 @@ const themeDetails: Record<string, ThemeDetail> = {
     textura: "Bocado fundente y crujiente de almendras tostadas con cobertura de chocolate fino.",
     sabor: "Trufa de chocolate amargo, notas de cardamomo y miel pura de azahar.",
     presentacion: "Torre dorada de presentación con pedestales turquesa real.",
-    imagen: "/images/eventos/cumpleanos_aladdin.png",
+    imagenes: [
+      "/images/eventos/cumpleanos_aladdin.png",
+      "/images/eventos/cumpleanos_aladdin_2.png",
+      "/images/eventos/cumpleanos_aladdin_3.png"
+    ],
   },
   alicia: {
     titulo: "Cumpleaños: Té en Wonderland",
@@ -112,7 +121,11 @@ const themeDetails: Record<string, ThemeDetail> = {
     textura: "Bizcocho súper húmedo de limón y arándanos, con cobertura de chocolate blanco crujiente.",
     sabor: "Limón confitado, frutos silvestres de temporada y chocolate blanco aterciopelado.",
     presentacion: "Mesa imperial con detalles de vajilla vintage de porcelana y encajes.",
-    imagen: "/images/eventos/cumpleanos_alicia.png",
+    imagenes: [
+      "/images/eventos/cumpleanos_alicia.png",
+      "/images/eventos/cumpleanos_alicia_2.png",
+      "/images/eventos/cumpleanos_alicia_3.png"
+    ],
   },
   dinosaurio: {
     titulo: "Cumpleaños: Aventura Jurásica",
@@ -121,7 +134,11 @@ const themeDetails: Record<string, ThemeDetail> = {
     textura: "Merengue crujiente, crema sedosa y base de brownie denso e intensamente húmedo.",
     sabor: "Chocolate fudge americano, frutos rojos y crema batida ligera.",
     presentacion: "Nidos rústicos decorados con hojas de monstera frescas.",
-    imagen: "/images/eventos/cumpleanos_dinosaurio.png",
+    imagenes: [
+      "/images/eventos/cumpleanos_dinosaurio.png",
+      "/images/eventos/cumpleanos_dinosaurio_2.png",
+      "/images/eventos/cumpleanos_dinosaurio_3.png"
+    ],
   },
   encanto: {
     titulo: "Cumpleaños: Mariposas Mágicas",
@@ -130,7 +147,11 @@ const themeDetails: Record<string, ThemeDetail> = {
     textura: "Corazón cremoso y suave cubierto de un cascarón de chocolate crujiente de alta densidad.",
     sabor: "Dulce de leche repostero premium, coco tostado y vainilla de bourbon.",
     presentacion: "Base festiva de madera rústica adornada con buganvilias y luces cálidas.",
-    imagen: "/images/eventos/cumpleanos_encanto.png",
+    imagenes: [
+      "/images/eventos/cumpleanos_encanto.png",
+      "/images/eventos/cumpleanos_encanto_2.png",
+      "/images/eventos/cumpleanos_encanto_3.png"
+    ],
   },
   fresita: {
     titulo: "Cumpleaños: Dulzura Silvestre",
@@ -139,7 +160,11 @@ const themeDetails: Record<string, ThemeDetail> = {
     textura: "Mousse etérea y bizcocho tierno que se funde instantáneamente al tacto y en boca.",
     sabor: "Fresas frescas del huerto, crema de mascarpone y chocolate rosa rubí.",
     presentacion: "Canastas de mimbre blanco y lazos de satén rosa pastel.",
-    imagen: "/images/eventos/cumpleanos_fresita.png",
+    imagenes: [
+      "/images/eventos/cumpleanos_fresita.png",
+      "/images/eventos/cumpleanos_fresita_2.png",
+      "/images/eventos/cumpleanos_fresita_3.png"
+    ],
   },
   futbol: {
     titulo: "Cumpleaños: Pasión Futbolera",
@@ -148,7 +173,24 @@ const themeDetails: Record<string, ThemeDetail> = {
     textura: "Bizcocho súper denso estilo trufa con cobertura crujiente de chocolate.",
     sabor: "Ganache de chocolate semi-amargo al 60% y crujiente de avellanas europeas.",
     presentacion: "Bandejas lacadas en negro piano con detalles de césped artificial impecable.",
-    imagen: "/images/eventos/cumpleanos_futbol.png",
+    imagenes: [
+      "/images/eventos/cumpleanos_futbol.png",
+      "/images/eventos/cumpleanos_futbol_2.png",
+      "/images/eventos/cumpleanos_futbol_3.png"
+    ],
+  },
+  toystory: {
+    titulo: "Cumpleaños: Vaqueros y Galaxias",
+    subtitulo: "Inspirado en Toy Story",
+    descripcion: "Una entrañable aventura que revive la nostalgia de la infancia en alta repostería. Delicadas paletas con nubes celestes modeladas en relieve, bizcochos con los emblemáticos colores de Woody y Buzz Lightyear, y finas estrellas de sheriff doradas en azúcar de autor. Un viaje infinito hacia el sabor y la imaginación.",
+    textura: "Bizcocho sumamente húmedo y cremoso cubierto de un cascarón crocante de chocolate belga de alta densidad.",
+    sabor: "Vainilla bourbon infusionada, chocolate con leche sedoso y ganache de caramelo toffee.",
+    presentacion: "Pedestales rústicos de madera noble y detalles estelares en oro pulido.",
+    imagenes: [
+      "/images/eventos/cumpleanos_toystory.png",
+      "/images/eventos/cumpleanos_toystory_2.png",
+      "/images/eventos/cumpleanos_toystory_3.png"
+    ],
   },
 };
 
@@ -167,21 +209,33 @@ const themeGlowStyles: Record<string, string> = {
   encanto: "from-yellow-950/20 via-fuchsia-950/20 to-brand-bg shadow-[0_0_100px_rgba(234,179,8,0.07)] border-yellow-500/20",
   fresita: "from-pink-950/30 via-red-950/15 to-brand-bg shadow-[0_0_100px_rgba(236,72,153,0.07)] border-pink-500/20",
   futbol: "from-emerald-950/20 via-neutral-900 to-brand-bg shadow-[0_0_100px_rgba(16,185,129,0.05)] border-emerald-500/10",
+  toystory: "from-sky-950/30 via-amber-950/20 to-brand-bg shadow-[0_0_100px_rgba(14,165,233,0.07)] border-sky-500/20",
 };
 
 export default function EventosPage() {
   const [mainTheme, setMainTheme] = useState("cumpleanos");
   const [birthdaySubtheme, setBirthdaySubtheme] = useState("hp");
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   const activeThemeId = mainTheme === "cumpleanos" ? birthdaySubtheme : mainTheme;
   const activeDetail = themeDetails[activeThemeId] || themeDetails.hp;
   const currentGlowClass = themeGlowStyles[activeThemeId] || themeGlowStyles.hp;
 
+  // Safe extraction of the active image to avoid index overflow issues
+  const activeImageIndexNormalized = activeImageIndex < activeDetail.imagenes.length ? activeImageIndex : 0;
+  const activeImageSrc = activeDetail.imagenes[activeImageIndexNormalized];
+
   const handleMainThemeChange = (id: string) => {
     setMainTheme(id);
+    setActiveImageIndex(0);
     if (id === "cumpleanos") {
       setBirthdaySubtheme("hp");
     }
+  };
+
+  const handleBirthdaySubthemeChange = (id: string) => {
+    setBirthdaySubtheme(id);
+    setActiveImageIndex(0);
   };
 
   // Crear el link de WhatsApp personalizado para cada dulce temático
@@ -276,7 +330,7 @@ export default function EventosPage() {
                   return (
                     <button
                       key={sub.id}
-                      onClick={() => setBirthdaySubtheme(sub.id)}
+                      onClick={() => handleBirthdaySubthemeChange(sub.id)}
                       className={`px-4 py-2 text-[10px] uppercase tracking-[0.15em] transition-all duration-300 ${
                         isSubActive
                           ? "text-brand-gold border border-brand-gold/30 bg-brand-gold/5"
@@ -308,19 +362,91 @@ export default function EventosPage() {
             <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-brand-gold/40" />
             <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-brand-gold/40" />
 
-            {/* Contenedor de la Imagen Rectificada */}
-            <div className="lg:col-span-6 flex items-center justify-center">
-              <div className="relative w-full aspect-square bg-[#0c0c0c] border border-brand-gold/15 overflow-hidden group shadow-2xl">
-                <Image
-                  src={activeDetail.imagen}
-                  alt={activeDetail.titulo}
-                  fill
-                  priority
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-750 ease-in-out group-hover:scale-105"
-                />
+            {/* Contenedor de la Imagen con Galería Interactiva */}
+            <div className="lg:col-span-6 flex flex-col items-center justify-center">
+              <div className="relative w-full aspect-square bg-[#0c0c0c] border border-brand-gold/15 overflow-hidden shadow-2xl">
+                
+                {/* Imagen Principal con Animación Cross-Fade Cinemática */}
+                <AnimatePresence mode="popLayout">
+                  <motion.div
+                    key={activeImageSrc}
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
+                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    className="absolute inset-0 w-full h-full"
+                  >
+                    <Image
+                      src={activeImageSrc}
+                      alt={activeDetail.titulo}
+                      fill
+                      priority
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover"
+                    />
+                  </motion.div>
+                </AnimatePresence>
+                
                 <div className="absolute inset-0 bg-gradient-to-t from-[#010101]/40 via-transparent to-transparent pointer-events-none" />
+
+                {/* Flechas de Navegación Laterales Flotantes */}
+                {activeDetail.imagenes.length > 1 && (
+                  <>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setActiveImageIndex((prev) => (prev - 1 + activeDetail.imagenes.length) % activeDetail.imagenes.length);
+                      }}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 rounded-full border border-brand-gold/20 hover:border-brand-gold/60 bg-[#050505]/40 hover:bg-[#050505]/80 text-brand-gold hover:text-brand-cream hover:scale-105 transition-all duration-300 shadow-lg"
+                      aria-label="Imagen anterior"
+                    >
+                      <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+                      </svg>
+                    </button>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setActiveImageIndex((prev) => (prev + 1) % activeDetail.imagenes.length);
+                      }}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 rounded-full border border-brand-gold/20 hover:border-brand-gold/60 bg-[#050505]/40 hover:bg-[#050505]/80 text-brand-gold hover:text-brand-cream hover:scale-105 transition-all duration-300 shadow-lg"
+                      aria-label="Siguiente imagen"
+                    >
+                      <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+                      </svg>
+                    </button>
+                  </>
+                )}
               </div>
+
+              {/* Miniaturas del Showroom (Fila de Previsualización) */}
+              {activeDetail.imagenes.length > 1 && (
+                <div className="w-full flex justify-center gap-2 mt-4 px-2">
+                  {activeDetail.imagenes.map((imgSrc, index) => {
+                    const isSelected = index === activeImageIndexNormalized;
+                    return (
+                      <button
+                        key={imgSrc}
+                        onClick={() => setActiveImageIndex(index)}
+                        className={`relative w-14 h-14 border ${
+                          isSelected
+                            ? "border-brand-gold scale-105 shadow-[0_0_8px_rgba(212,175,55,0.4)]"
+                            : "border-brand-gold/20 hover:border-brand-gold/60 opacity-60 hover:opacity-100"
+                        } transition-all duration-300 overflow-hidden bg-[#0c0c0c] aspect-square flex-shrink-0`}
+                      >
+                        <Image
+                          src={imgSrc}
+                          alt={`Miniatura ${index + 1}`}
+                          fill
+                          sizes="80px"
+                          className="object-cover"
+                        />
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
             </div>
 
             {/* Ficha e Información Gourmet */}
