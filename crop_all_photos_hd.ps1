@@ -1,6 +1,8 @@
 # C# Image Processor for safe, fast, high-quality center crop, resize, and sharpening convolution.
 # Preserves 100% of the authentic original sweets from Caracas Mini Dulces.
 # 100% pure ASCII to prevent any Windows PowerShell encoding parser brace corruptions.
+# Detects screenshots containing "Captura" and crops a tighter 70% center square to completely
+# eliminate the blurred side-bands, while doing a standard 100% crop on native camera photos.
 
 $csharpCode = @'
 using System;
@@ -19,9 +21,21 @@ public class ImageProcessor {
         using (Image srcImg = Image.FromFile(srcPath)) {
             int srcWidth = srcImg.Width;
             int srcHeight = srcImg.Height;
-            int squareSize = Math.Min(srcWidth, srcHeight);
+            
+            // Check if it is a mobile screenshot (contains "Captura")
+            bool isScreenshot = srcPath.IndexOf("Captura", StringComparison.OrdinalIgnoreCase) >= 0;
+            
+            // If it is a screenshot, crop a tighter 70% center region to remove the blurred side bands.
+            // If it is a native camera image, use 100% of the minimum dimension.
+            double cropScale = isScreenshot ? 0.70 : 1.0;
+            
+            int baseSize = Math.Min(srcWidth, srcHeight);
+            int squareSize = (int)Math.Floor(baseSize * cropScale);
+            
             int cropX = (srcWidth - squareSize) / 2;
             int cropY = (srcHeight - squareSize) / 2;
+
+            Console.WriteLine("Image: " + System.IO.Path.GetFileName(srcPath) + " (" + srcWidth + "x" + srcHeight + ") -> Crop: " + squareSize + "x" + squareSize + " at (" + cropX + "," + cropY + ") [Screenshot: " + isScreenshot + "]");
 
             // Step 1: Center Crop and High-Quality Resize
             using (Bitmap resizedBmp = new Bitmap(targetSize, targetSize)) {
@@ -39,7 +53,7 @@ public class ImageProcessor {
 
                 // Step 2: Apply Sharpen Filter (using convolution matrix)
                 using (Bitmap sharpenedBmp = new Bitmap(targetSize, targetSize)) {
-                    // Mild sharpening kernel to enhance edges cleanly
+                    // Premium sharpening kernel to enhance details cleanly without noise
                     float[,] kernel = new float[3, 3] {
                         { 0, -0.4f, 0 },
                         { -0.4f, 2.6f, -0.4f },
