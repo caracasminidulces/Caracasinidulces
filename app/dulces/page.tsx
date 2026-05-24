@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useCart } from "../context/CartContext";
+import { useCart } from "../../context/CartContext";
 
 // Definición de las colecciones de dulces reales con descripciones sensoriales irresistibles
 const colecciones = [
