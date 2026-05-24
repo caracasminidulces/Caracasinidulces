@@ -34,6 +34,7 @@ const themeSymbols: Record<string, string[]> = {
   encanto: ["🦋", "🌸", "✨", "🕯️", "🌺"],
   fresita: ["🍓", "🎀", "🌼", "🍰", "🍒"],
   futbol: ["⚽", "🏆", "⭐", "🥇", "🥅"],
+  toystory: ["🤠", "🚀", "⭐", "👽", "🎈"],
 };
 
 export default function ThemeParticles({ theme }: ThemeParticlesProps) {

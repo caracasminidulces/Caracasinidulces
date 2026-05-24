@@ -346,156 +346,168 @@ export default function EventosPage() {
           )}
         </AnimatePresence>
 
-        {/* 6. Showroom de Dulces Temáticos en Marco de Lujo */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeThemeId}
-            initial={{ opacity: 0, scale: 0.98, y: 15 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.98, y: -15 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 bg-[#050505]/75 border border-brand-gold/10 p-6 md:p-10 backdrop-blur-md relative"
-          >
-            {/* Esquinas ornamentales estilo simetría geométrica de lujo */}
-            <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-brand-gold/40" />
-            <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-brand-gold/40" />
-            <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-brand-gold/40" />
-            <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-brand-gold/40" />
+        {/* 6. Showroom de Dulces Temáticos en Marco de Lujo con Transición Líquida */}
+        <motion.div
+          layout
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.8,
+            ease: [0.16, 1, 0.3, 1],
+            layout: { type: "spring", stiffness: 320, damping: 33 }
+          }}
+          className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 bg-[#050505]/75 border border-brand-gold/10 p-6 md:p-10 backdrop-blur-md relative"
+        >
+          {/* Esquinas ornamentales estilo simetría geométrica de lujo */}
+          <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-brand-gold/40" />
+          <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-brand-gold/40" />
+          <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-brand-gold/40" />
+          <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-brand-gold/40" />
 
-            {/* Contenedor de la Imagen con Galería Interactiva */}
-            <div className="lg:col-span-6 flex flex-col items-center justify-center">
-              <div className="relative w-full aspect-square bg-[#0c0c0c] border border-brand-gold/15 overflow-hidden shadow-2xl">
-                
-                {/* Imagen Principal con Animación Cross-Fade Cinemática */}
-                <AnimatePresence mode="popLayout">
-                  <motion.div
-                    key={activeImageSrc}
-                    initial={{ opacity: 0, scale: 0.98 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.98 }}
-                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                    className="absolute inset-0 w-full h-full"
-                  >
-                    <Image
-                      src={activeImageSrc}
-                      alt={activeDetail.titulo}
-                      fill
-                      priority={activeThemeId === "hp"}
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover"
-                    />
-                  </motion.div>
-                </AnimatePresence>
-                
-                <div className="absolute inset-0 bg-gradient-to-t from-[#010101]/40 via-transparent to-transparent pointer-events-none" />
+          {/* Contenedor de la Imagen con Galería Interactiva */}
+          <div className="lg:col-span-6 flex flex-col items-center justify-center">
+            <div className="relative w-full aspect-square bg-[#0c0c0c] border border-brand-gold/15 overflow-hidden shadow-2xl">
+              
+              {/* Imagen Principal con Animación Cross-Fade Cinemática */}
+              <AnimatePresence mode="popLayout">
+                <motion.div
+                  key={activeImageSrc}
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.98 }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  className="absolute inset-0 w-full h-full"
+                >
+                  <Image
+                    src={activeImageSrc}
+                    alt={activeDetail.titulo}
+                    fill
+                    priority={activeThemeId === "hp"}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover"
+                  />
+                </motion.div>
+              </AnimatePresence>
+              
+              <div className="absolute inset-0 bg-gradient-to-t from-[#010101]/40 via-transparent to-transparent pointer-events-none" />
 
-                {/* Flechas de Navegación Laterales Flotantes */}
-                {activeDetail.imagenes.length > 1 && (
-                  <>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setActiveImageIndex((prev) => (prev - 1 + activeDetail.imagenes.length) % activeDetail.imagenes.length);
-                      }}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 rounded-full border border-brand-gold/20 hover:border-brand-gold/60 bg-[#050505]/40 hover:bg-[#050505]/80 text-brand-gold hover:text-brand-cream hover:scale-105 transition-all duration-300 shadow-lg"
-                      aria-label="Imagen anterior"
-                    >
-                      <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
-                      </svg>
-                    </button>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setActiveImageIndex((prev) => (prev + 1) % activeDetail.imagenes.length);
-                      }}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 rounded-full border border-brand-gold/20 hover:border-brand-gold/60 bg-[#050505]/40 hover:bg-[#050505]/80 text-brand-gold hover:text-brand-cream hover:scale-105 transition-all duration-300 shadow-lg"
-                      aria-label="Siguiente imagen"
-                    >
-                      <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
-                      </svg>
-                    </button>
-                  </>
-                )}
-              </div>
-
-              {/* Miniaturas del Showroom (Fila de Previsualización) */}
+              {/* Flechas de Navegación Laterales Flotantes */}
               {activeDetail.imagenes.length > 1 && (
-                <div className="w-full flex justify-center gap-2 mt-4 px-2">
-                  {activeDetail.imagenes.map((imgSrc, index) => {
-                    const isSelected = index === activeImageIndexNormalized;
-                    return (
-                      <button
-                        key={imgSrc}
-                        onClick={() => setActiveImageIndex(index)}
-                        className={`relative w-14 h-14 border ${
-                          isSelected
-                            ? "border-brand-gold scale-105 shadow-[0_0_8px_rgba(212,175,55,0.4)]"
-                            : "border-brand-gold/20 hover:border-brand-gold/60 opacity-60 hover:opacity-100"
-                        } transition-all duration-300 overflow-hidden bg-[#0c0c0c] aspect-square flex-shrink-0`}
-                      >
-                        <Image
-                          src={imgSrc}
-                          alt={`Miniatura ${index + 1}`}
-                          fill
-                          sizes="80px"
-                          className="object-cover"
-                        />
-                      </button>
-                    );
-                  })}
-                </div>
+                <>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setActiveImageIndex((prev) => (prev - 1 + activeDetail.imagenes.length) % activeDetail.imagenes.length);
+                    }}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 rounded-full border border-brand-gold/20 hover:border-brand-gold/60 bg-[#050505]/40 hover:bg-[#050505]/80 text-brand-gold hover:text-brand-cream hover:scale-105 transition-all duration-300 shadow-lg"
+                    aria-label="Imagen anterior"
+                  >
+                    <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                      <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+                    </svg>
+                  </button>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setActiveImageIndex((prev) => (prev + 1) % activeDetail.imagenes.length);
+                    }}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 rounded-full border border-brand-gold/20 hover:border-brand-gold/60 bg-[#050505]/40 hover:bg-[#050505]/80 text-brand-gold hover:text-brand-cream hover:scale-105 transition-all duration-300 shadow-lg"
+                    aria-label="Siguiente imagen"
+                  >
+                    <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                      <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+                    </svg>
+                  </button>
+                </>
               )}
             </div>
 
-            {/* Ficha e Información Gourmet */}
-            <div className="lg:col-span-6 flex flex-col justify-center">
-              <span className="text-[10px] uppercase tracking-[0.25em] text-brand-gold font-semibold mb-2">
-                {activeDetail.subtitulo}
-              </span>
-              <h2 className="text-2xl md:text-3xl font-light tracking-wide text-brand-cream mb-4">
-                {activeDetail.titulo}
-              </h2>
-              <div className="w-16 h-[1px] bg-brand-gold mb-6" />
-              
-              <p className="text-xs md:text-sm text-brand-cream/80 font-light leading-relaxed mb-8 font-body">
-                {activeDetail.descripcion}
-              </p>
-
-              {/* Ficha Técnica Sensorial Simétrica */}
-              <div className="border-t border-b border-brand-gold/10 py-5 mb-8 flex flex-col gap-3 text-xs tracking-wide">
-                <div className="grid grid-cols-12">
-                  <span className="col-span-3 text-brand-cream/40 font-medium uppercase font-body text-[10px] self-center">Sensación:</span>
-                  <span className="col-span-9 font-light italic text-[#FDF3BF] font-body">{activeDetail.textura}</span>
-                </div>
-                <div className="grid grid-cols-12">
-                  <span className="col-span-3 text-brand-cream/40 font-medium uppercase font-body text-[10px] self-center">Sabor:</span>
-                  <span className="col-span-9 font-light text-brand-cream/90 font-body">{activeDetail.sabor}</span>
-                </div>
-                <div className="grid grid-cols-12">
-                  <span className="col-span-3 text-brand-cream/40 font-medium uppercase font-body text-[10px] self-center">Montaje:</span>
-                  <span className="col-span-9 font-light text-brand-cream/90 font-body">{activeDetail.presentacion}</span>
-                </div>
+            {/* Miniaturas del Showroom (Fila de Previsualización) */}
+            {activeDetail.imagenes.length > 1 && (
+              <div className="w-full flex justify-center gap-2 mt-4 px-2">
+                {activeDetail.imagenes.map((imgSrc, index) => {
+                  const isSelected = index === activeImageIndexNormalized;
+                  return (
+                    <button
+                      key={imgSrc}
+                      onClick={() => setActiveImageIndex(index)}
+                      className={`relative w-14 h-14 border ${
+                        isSelected
+                          ? "border-brand-gold scale-105 shadow-[0_0_8px_rgba(212,175,55,0.4)]"
+                          : "border-brand-gold/20 hover:border-brand-gold/60 opacity-60 hover:opacity-100"
+                      } transition-all duration-300 overflow-hidden bg-[#0c0c0c] aspect-square flex-shrink-0`}
+                    >
+                      <Image
+                        src={imgSrc}
+                        alt={`Miniatura ${index + 1}`}
+                        fill
+                        sizes="80px"
+                        className="object-cover"
+                      />
+                    </button>
+                  );
+                })}
               </div>
+            )}
+          </div>
 
-              {/* Botón de Pedido por WhatsApp Temático */}
-              <div>
-                <a
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 text-xs uppercase tracking-[0.2em] px-6 py-3 border border-brand-gold text-brand-gold hover:text-brand-bg hover:bg-brand-gold transition-all duration-500 ease-luxury font-medium"
-                >
-                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.003 5.324 5.328 0 11.822 0c3.148.001 6.107 1.227 8.331 3.453 2.224 2.227 3.45 5.187 3.447 8.335-.006 6.502-5.332 11.827-11.828 11.827-2.002-.001-3.972-.51-5.733-1.485L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.725 1.45 5.389 0 9.773-4.381 9.777-9.772.002-2.61-1.01-5.063-2.851-6.907C16.4 2.08 13.945 1.066 11.336 1.065 5.948 1.065 1.564 5.447 1.56 10.839c-.001 1.637.447 3.235 1.3 4.65L1.88 20.89l5.59-1.466z" />
-                  </svg>
-                  Solicitar Presupuesto
-                </a>
-              </div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
+          {/* Ficha e Información Gourmet con Animación Fluida */}
+          <div className="lg:col-span-6 flex flex-col justify-center min-h-[380px] relative overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeThemeId}
+                initial={{ opacity: 0, x: 15 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -15 }}
+                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                className="w-full h-full flex flex-col justify-center"
+              >
+                <span className="text-[10px] uppercase tracking-[0.25em] text-brand-gold font-semibold mb-2">
+                  {activeDetail.subtitulo}
+                </span>
+                <h2 className="text-2xl md:text-3xl font-light tracking-wide text-brand-cream mb-4">
+                  {activeDetail.titulo}
+                </h2>
+                <div className="w-16 h-[1px] bg-brand-gold mb-6" />
+                
+                <p className="text-xs md:text-sm text-brand-cream/80 font-light leading-relaxed mb-8 font-body">
+                  {activeDetail.descripcion}
+                </p>
+
+                {/* Ficha Técnica Sensorial Simétrica */}
+                <div className="border-t border-b border-brand-gold/10 py-5 mb-8 flex flex-col gap-3 text-xs tracking-wide">
+                  <div className="grid grid-cols-12">
+                    <span className="col-span-3 text-brand-cream/40 font-medium uppercase font-body text-[10px] self-center">Sensación:</span>
+                    <span className="col-span-9 font-light italic text-[#FDF3BF] font-body">{activeDetail.textura}</span>
+                  </div>
+                  <div className="grid grid-cols-12">
+                    <span className="col-span-3 text-brand-cream/40 font-medium uppercase font-body text-[10px] self-center">Sabor:</span>
+                    <span className="col-span-9 font-light text-brand-cream/90 font-body">{activeDetail.sabor}</span>
+                  </div>
+                  <div className="grid grid-cols-12">
+                    <span className="col-span-3 text-brand-cream/40 font-medium uppercase font-body text-[10px] self-center">Montaje:</span>
+                    <span className="col-span-9 font-light text-brand-cream/90 font-body">{activeDetail.presentacion}</span>
+                  </div>
+                </div>
+
+                {/* Botón de Pedido por WhatsApp Temático */}
+                <div>
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-3 text-xs uppercase tracking-[0.2em] px-6 py-3 border border-brand-gold text-brand-gold hover:text-brand-bg hover:bg-brand-gold transition-all duration-500 ease-luxury font-medium"
+                  >
+                    <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.003 5.324 5.328 0 11.822 0c3.148.001 6.107 1.227 8.331 3.453 2.224 2.227 3.45 5.187 3.447 8.335-.006 6.502-5.332 11.827-11.828 11.827-2.002-.001-3.972-.51-5.733-1.485L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.725 1.45 5.389 0 9.773-4.381 9.777-9.772.002-2.61-1.01-5.063-2.851-6.907C16.4 2.08 13.945 1.066 11.336 1.065 5.948 1.065 1.564 5.447 1.56 10.839c-.001 1.637.447 3.235 1.3 4.65L1.88 20.89l5.59-1.466z" />
+                    </svg>
+                    Solicitar Presupuesto
+                  </a>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </motion.div>
       </div>
     </div>
   );
