@@ -40,26 +40,30 @@ export default function ThemeParticles({ theme }: ThemeParticlesProps) {
   const [particles, setParticles] = useState<Particle[]>([]);
   const [isMounted, setIsMounted] = useState(false);
 
+  // Registrar el montaje inicial de manera única
   useEffect(() => {
     setIsMounted(true);
+  }, []);
+
+  // Generar partículas cuando cambia el tema o tras el montaje inicial
+  useEffect(() => {
+    if (!isMounted) return;
     
-    // Generar partículas aleatorias estables en el cliente
     const symbols = themeSymbols[theme] || ["✨", "✨"];
     const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
-    const count = isMobile ? 6 : 20; // Reducido dinámicamente en móvil para máximo rendimiento
+    const count = isMobile ? 6 : 20; // Reducido en móvil para máximo rendimiento
     const generated: Particle[] = Array.from({ length: count }).map((_, i) => {
       const isUpward = theme === "san_valentin";
       return {
         id: i,
         symbol: symbols[Math.floor(Math.random() * symbols.length)],
-        left: Math.random() * 100, // % de ancho de pantalla
-        size: Math.random() * 14 + 14, // tamaño optimizado entre 14px y 28px
-        delay: Math.random() * 5, // retraso aleatorio hasta 5s
-        duration: Math.random() * 5 + (isUpward ? 5 : 7), // duración de caída/subida
-        rotation: Math.random() * 360, // rotación inicial
-        rotationDirection: Math.random() > 0.5 ? 180 : -180, // rotación estable
-        glow: Math.random() > 0.7, // algunas brillan más
-        // Pre-calcular balanceo en píxeles puros para evitar recálculo de strings (vw/vh) en render
+        left: Math.random() * 100,
+        size: Math.random() * 14 + 14,
+        delay: Math.random() * 5,
+        duration: Math.random() * 5 + (isUpward ? 5 : 7),
+        rotation: Math.random() * 360,
+        rotationDirection: Math.random() > 0.5 ? 180 : -180,
+        glow: Math.random() > 0.7,
         xSway: [
           0,
           Math.random() * 30 - 15,
@@ -71,7 +75,7 @@ export default function ThemeParticles({ theme }: ThemeParticlesProps) {
     });
     
     setParticles(generated);
-  }, [theme]);
+  }, [theme, isMounted]);
 
   if (!isMounted) return null;
 

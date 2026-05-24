@@ -44,26 +44,29 @@ export default function CartDrawer() {
 
   return (
     <AnimatePresence>
+      {/* Backdrop esmerilado */}
       {isCartOpen && (
-        <>
-          {/* Backdrop esmerilado */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
-            onClick={() => setIsCartOpen(false)}
-            className="fixed inset-0 z-50 bg-[#000000]/70 backdrop-blur-sm cursor-pointer"
-          />
+        <motion.div
+          key="cart-backdrop"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4 }}
+          onClick={() => setIsCartOpen(false)}
+          className="fixed inset-0 z-50 bg-[#000000]/70 backdrop-blur-sm cursor-pointer"
+        />
+      )}
 
-          {/* Panel del Drawer */}
-          <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "spring", damping: 30, stiffness: 220 }}
-            className="fixed top-0 right-0 z-50 w-full max-w-md h-screen bg-[#010101]/95 border-l border-brand-gold/15 shadow-gold-md flex flex-col justify-between"
-          >
+      {/* Panel del Drawer */}
+      {isCartOpen && (
+        <motion.div
+          key="cart-panel"
+          initial={{ x: "100%" }}
+          animate={{ x: 0 }}
+          exit={{ x: "100%" }}
+          transition={{ type: "spring", damping: 30, stiffness: 220 }}
+          className="fixed top-0 right-0 z-50 w-full max-w-md h-screen bg-[#010101]/95 border-l border-brand-gold/15 shadow-gold-md flex flex-col justify-between"
+        >
             {/* Resplandor dorado decorativo de fondo */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-brand-gold/[0.015] blur-3xl pointer-events-none rounded-full" />
 
@@ -249,8 +252,7 @@ export default function CartDrawer() {
               </div>
             )}
           </motion.div>
-        </>
-      )}
+        )}
     </AnimatePresence>
   );
 }

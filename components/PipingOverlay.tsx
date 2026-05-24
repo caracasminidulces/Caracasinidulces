@@ -22,10 +22,10 @@ export default function PipingOverlay({ onComplete }: PipingOverlayProps) {
     // Iniciar la animación del dibujo vectorial del logo
     setAnimationStage("drawing");
 
-    // Tiempos optimizados de la coreografía de gala
-    const revealDelay = mobileCheck ? 800 : 1500;
-    const fadeOutDelay = mobileCheck ? 1600 : 2800;
-    const completeDelay = mobileCheck ? 2200 : 3400;
+    // Tiempos optimizados de la coreografía de gala (extendidos en móvil para apreciarse)
+    const revealDelay = mobileCheck ? 1400 : 1500;
+    const fadeOutDelay = mobileCheck ? 2600 : 2800;
+    const completeDelay = mobileCheck ? 3200 : 3400;
 
     // Temporizador para revelar el logo original a color
     const revealTimer = setTimeout(() => {
@@ -96,7 +96,7 @@ export default function PipingOverlay({ onComplete }: PipingOverlayProps) {
                 filter="url(#logoStrokeGlow)"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: animationStage !== "idle" ? 1 : 0 }}
-                transition={{ duration: isMobile ? 1.0 : 1.8, ease: "easeInOut" }}
+                transition={{ duration: isMobile ? 1.4 : 1.8, ease: "easeInOut" }}
               />
 
               {/* Capa 2: Cuerpo central dorado metálico */}
@@ -110,7 +110,7 @@ export default function PipingOverlay({ onComplete }: PipingOverlayProps) {
                 opacity="0.75"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: animationStage !== "idle" ? 1 : 0 }}
-                transition={{ duration: isMobile ? 1.0 : 1.8, ease: "easeInOut" }}
+                transition={{ duration: isMobile ? 1.4 : 1.8, ease: "easeInOut" }}
               />
 
               {/* Capa 3: Brillo superior claro para tridimensionalidad */}
@@ -124,7 +124,7 @@ export default function PipingOverlay({ onComplete }: PipingOverlayProps) {
                 opacity="0.9"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: animationStage !== "idle" ? 1 : 0 }}
-                transition={{ duration: isMobile ? 1.0 : 1.8, ease: "easeInOut" }}
+                transition={{ duration: isMobile ? 1.4 : 1.8, ease: "easeInOut" }}
               />
             </svg>
 

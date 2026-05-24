@@ -186,6 +186,7 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            key="mobile-drawer"
             initial={{ opacity: 0, y: "-100%" }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: "-100%" }}

@@ -380,7 +380,7 @@ export default function EventosPage() {
                       src={activeImageSrc}
                       alt={activeDetail.titulo}
                       fill
-                      priority
+                      priority={activeThemeId === "hp"}
                       sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover"
                     />
