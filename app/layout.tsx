@@ -3,6 +3,8 @@ import { Cinzel, Montserrat } from "next/font/google";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import PageTransitionProvider from "../components/PageTransitionProvider";
+import { CartProvider } from "../context/CartContext";
+import CartDrawer from "../components/CartDrawer";
 import "./globals.css";
 
 // Fuente elegante para títulos (simetría inspirada en caligrafía romana)
@@ -62,16 +64,21 @@ export default function RootLayout({
       className={`${cinzel.variable} ${montserrat.variable} scroll-smooth`}
     >
       <body className="font-body bg-brand-bg text-brand-cream antialiased min-h-screen selection:bg-brand-gold selection:text-brand-bg overflow-x-hidden pt-[72px]">
-        {/* Barra de navegación global */}
-        <Navbar />
+        <CartProvider>
+          {/* Barra de navegación global */}
+          <Navbar />
 
-        {/* Envoltura de animación de página */}
-        <PageTransitionProvider>
-          {children}
-        </PageTransitionProvider>
+          {/* Envoltura de animación de página */}
+          <PageTransitionProvider>
+            {children}
+          </PageTransitionProvider>
 
-        {/* Pie de página global */}
-        <Footer />
+          {/* Panel de carrito lateral */}
+          <CartDrawer />
+
+          {/* Pie de página global */}
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );

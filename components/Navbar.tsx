@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useCart } from "../context/CartContext";
 
 const Path = (props: any) => (
   <motion.path
@@ -19,6 +20,7 @@ const Path = (props: any) => (
 export default function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const { cartCount, setIsCartOpen } = useCart();
 
   const links = [
     { href: "/", label: "Inicio" },
@@ -94,8 +96,46 @@ export default function Navbar() {
           })}
         </div>
 
-        {/* 3. Derecha: Botón de WhatsApp/Contacto Rápido Desktop y Botón Móvil */}
-        <div className="flex items-center gap-4">
+        {/* 3. Derecha: Botón de Carrito, WhatsApp/Contacto Rápido Desktop y Botón Móvil */}
+        <div className="flex items-center gap-3 md:gap-5">
+          {/* Botón del Carrito */}
+          <button
+            onClick={() => setIsCartOpen(true)}
+            className="relative p-2 border border-brand-gold/15 hover:border-brand-gold/50 text-brand-gold transition-all duration-300 focus:outline-none flex items-center justify-center group"
+            aria-label="Ver carrito"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="group-hover:scale-105 transition-transform duration-300"
+            >
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            
+            {/* Indicador de cantidad (Badge) */}
+            <AnimatePresence>
+              {cartCount > 0 && (
+                <motion.span
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0, opacity: 0 }}
+                  transition={{ type: "spring", stiffness: 500, damping: 25 }}
+                  className="absolute -top-1.5 -right-1.5 w-[18px] h-[18px] bg-brand-gold text-brand-bg font-body text-[9px] font-bold rounded-full flex items-center justify-center border border-brand-bg shadow-gold-sm"
+                >
+                  {cartCount}
+                </motion.span>
+              )}
+            </AnimatePresence>
+          </button>
+
           <a
             href="https://wa.me/584141835422" // WhatsApp de Caracas Mini Dulces
             target="_blank"

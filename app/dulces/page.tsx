@@ -1,7 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useCart } from "../context/CartContext";
 
 // Definición de las colecciones de dulces reales con descripciones sensoriales irresistibles
 const colecciones = [
@@ -55,6 +57,45 @@ const colecciones = [
 ];
 
 export default function DulcesPage() {
+  const { addToCart } = useCart();
+  const [quantities, setQuantities] = useState<{ [key: string]: number }>({});
+  const [addedItems, setAddedItems] = useState<{ [key: string]: boolean }>({});
+
+  const handleIncrement = (nombre: string) => {
+    setQuantities(prev => ({
+      ...prev,
+      [nombre]: (prev[nombre] || 1) + 1
+    }));
+  };
+
+  const handleDecrement = (nombre: string) => {
+    setQuantities(prev => ({
+      ...prev,
+      [nombre]: Math.max(1, (prev[nombre] || 1) - 1)
+    }));
+  };
+
+  const getQuantity = (nombre: string) => {
+    return quantities[nombre] || 1;
+  };
+
+  const handleAddToCart = (item: any) => {
+    const qty = getQuantity(item.nombre);
+    addToCart({
+      nombre: item.nombre,
+      descripcion: item.descripcion,
+      imagen: item.imagen,
+      textura: item.textura,
+      categoria: item.categoria
+    }, qty);
+    
+    // Feedback de añadido
+    setAddedItems(prev => ({ ...prev, [item.nombre]: true }));
+    setTimeout(() => {
+      setAddedItems(prev => ({ ...prev, [item.nombre]: false }));
+    }, 1500);
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -157,10 +198,59 @@ export default function DulcesPage() {
                       </p>
 
                       {/* Ficha Sensorial (Rico, apetitoso y de alta gama) */}
-                      <div className="mt-auto pt-4 border-t border-brand-gold/5 flex flex-col gap-2 text-[10px] tracking-wide text-brand-gold-light uppercase">
-                        <div>
-                          <strong className="text-brand-cream/40 font-medium font-body mr-1">Sensación:</strong> 
-                          <span className="font-light italic text-[#FDF3BF]/90">{item.textura}</span>
+                      <div className="mt-auto pt-4 border-t border-brand-gold/5 flex flex-col gap-4">
+                        <div className="text-[10px] tracking-wide text-brand-gold-light uppercase flex items-center justify-between">
+                          <div>
+                            <strong className="text-brand-cream/40 font-medium font-body mr-1">Sensación:</strong> 
+                            <span className="font-light italic text-[#FDF3BF]/90">{item.textura}</span>
+                          </div>
+                        </div>
+
+                        {/* Controles de Compra */}
+                        <div className="flex gap-3 items-center mt-2">
+                          {/* Selector de cantidad */}
+                          <div className="flex items-center border border-brand-gold/15 bg-[#010101] select-none">
+                            <button
+                              onClick={() => handleDecrement(item.nombre)}
+                              className="px-2.5 py-1.5 text-xs text-brand-gold hover:bg-brand-gold/10 transition-colors duration-200 font-medium"
+                              aria-label="Disminuir cantidad"
+                            >
+                              -
+                            </button>
+                            <span className="px-3 text-xs text-brand-cream font-medium font-body w-6 text-center">
+                              {getQuantity(item.nombre)}
+                            </span>
+                            <button
+                              onClick={() => handleIncrement(item.nombre)}
+                              className="px-2.5 py-1.5 text-xs text-brand-gold hover:bg-brand-gold/10 transition-colors duration-200 font-medium"
+                              aria-label="Incrementar cantidad"
+                            >
+                              +
+                            </button>
+                          </div>
+
+                          {/* Botón Añadir */}
+                          <button
+                            onClick={() => handleAddToCart(item)}
+                            className="flex-grow py-2 border border-brand-gold/30 hover:border-brand-gold bg-transparent hover:bg-brand-gold text-brand-gold hover:text-brand-bg text-[9px] font-semibold uppercase tracking-[0.2em] transition-all duration-500 flex items-center justify-center gap-2 focus:outline-none"
+                          >
+                            {addedItems[item.nombre] ? (
+                              <>
+                                <span>¡Añadido!</span>
+                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                                  <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                              </>
+                            ) : (
+                              <>
+                                <span>Añadir</span>
+                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                              </>
+                            )}
+                          </button>
                         </div>
                       </div>
                     </div>

@@ -1,11 +1,52 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import HeroSection from "../components/HeroSection";
+import { useCart } from "../context/CartContext";
 
 export default function Home() {
+  const { addToCart } = useCart();
+  const [addedIndex, setAddedIndex] = useState<number | null>(null);
+
+  const destacados = [
+    {
+      nombre: "Mini Pavlova de Gala",
+      categoria: "Pavlovas",
+      imagen: "/images/dulces/minipavlova.png",
+      descripcion: "Elegantes bocados de merengue horneado lentamente, rellenos con una suave corona de crema batida y fresas frescas, o dulce de leche repostero con un toque crocante de nueces.",
+      textura: "Merengue etéreo y crujiente con la suavidad de la crema"
+    },
+    {
+      nombre: "Polvorosas Imperiales",
+      categoria: "Bocados Finos",
+      imagen: "/images/dulces/polvorosas.png",
+      descripcion: "Tradicionales polvorosas caraqueñas que se deshacen delicadamente en el paladar. Elaboradas con un toque sutil de vainilla bourbon y espolvoreadas con azúcar fina.",
+      textura: "Desmoronamiento suave y fundente al instante"
+    },
+    {
+      nombre: "Brookies Tentación",
+      categoria: "Bocados Finos",
+      imagen: "/images/dulces/brookies.png",
+      descripcion: "La fusión definitiva de dos mundos: una base densa y húmeda de brownie de chocolate belga fusionada con una cubierta crocante de galleta con chispas de chocolate.",
+      textura: "Corazón súper meloso con superficie crujiente"
+    }
+  ];
+
+  const handleAdd = (item: any, index: number) => {
+    addToCart({
+      nombre: item.nombre,
+      descripcion: item.descripcion,
+      imagen: item.imagen,
+      textura: item.textura,
+      categoria: item.categoria
+    }, 1);
+    setAddedIndex(index);
+    setTimeout(() => setAddedIndex(null), 1500);
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -57,71 +98,87 @@ export default function Home() {
             viewport={{ once: true, margin: "-100px" }}
             className="w-full grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
           >
-            {/* Tarjeta 1 */}
-            <motion.div
-              variants={itemVariants}
-              className="group flex flex-col p-6 bg-brand-bg border border-brand-gold/10 hover:border-brand-gold/40 transition-all duration-500 ease-luxury"
-            >
-              <div className="relative w-full aspect-square bg-[#0a0a0a] overflow-hidden mb-6 border border-brand-gold/5 flex items-center justify-center text-center p-4">
-                <div className="absolute inset-0 bg-gold-radial-glow opacity-25 group-hover:opacity-50 transition-all duration-500" />
-                <span className="text-[10px] tracking-[0.2em] text-brand-gold-light uppercase font-semibold">
-                  Trufa de Chocolate 24K
-                </span>
-              </div>
-              <h3 className="font-heading text-base tracking-wide text-brand-cream group-hover:text-brand-gold transition-colors duration-300 mb-2">
-                Trufa Real
-              </h3>
-              <p className="text-xs text-brand-cream/70 font-light leading-relaxed font-body mb-4 flex-grow">
-                Chocolate belga oscuro de origen único al 70%, centro fundente de ganache sedosa y un destello dorado comestible.
-              </p>
-              <span className="text-[9px] tracking-[0.15em] text-brand-gold-light uppercase font-medium italic mt-auto">
-                Textura: Fundente de Terciopelo
-              </span>
-            </motion.div>
+            {destacados.map((item, idx) => (
+              <motion.div
+                key={item.nombre}
+                variants={itemVariants}
+                className="group flex flex-col p-6 bg-brand-bg border border-brand-gold/10 hover:border-brand-gold/40 transition-all duration-500 ease-luxury"
+              >
+                {/* Contenedor de la Imagen Real del Producto */}
+                <div className="relative w-full aspect-square bg-[#0c0c0c] border border-brand-gold/5 flex items-center justify-center overflow-hidden mb-6">
+                  <Image
+                    src={item.imagen}
+                    alt={item.nombre}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 330px"
+                    className="object-cover transition-transform duration-750 ease-in-out group-hover:scale-105"
+                  />
+                  {/* Efecto de degradado premium sobre la foto */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#010101]/60 via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none" />
+                </div>
 
-            {/* Tarjeta 2 */}
-            <motion.div
-              variants={itemVariants}
-              className="group flex flex-col p-6 bg-brand-bg border border-brand-gold/10 hover:border-brand-gold/40 transition-all duration-500 ease-luxury"
-            >
-              <div className="relative w-full aspect-square bg-[#0a0a0a] overflow-hidden mb-6 border border-brand-gold/5 flex items-center justify-center text-center p-4">
-                <div className="absolute inset-0 bg-gold-radial-glow opacity-25 group-hover:opacity-50 transition-all duration-500" />
-                <span className="text-[10px] tracking-[0.2em] text-brand-gold-light uppercase font-semibold">
-                  Macarons de Pistacho
+                <span className="text-[9px] uppercase tracking-[0.2em] text-brand-gold-light font-semibold mb-2 block">
+                  {item.categoria}
                 </span>
-              </div>
-              <h3 className="font-heading text-base tracking-wide text-brand-cream group-hover:text-brand-gold transition-colors duration-300 mb-2">
-                Macarons Franceses
-              </h3>
-              <p className="text-xs text-brand-cream/70 font-light leading-relaxed font-body mb-4 flex-grow">
-                Conchas simétricas y crujientes de harina de almendras rellenas con una densa crema de pistacho puro italiano.
-              </p>
-              <span className="text-[9px] tracking-[0.15em] text-brand-gold-light uppercase font-medium italic mt-auto">
-                Textura: Delicado y Cremoso
-              </span>
-            </motion.div>
 
-            {/* Tarjeta 3 */}
-            <motion.div
-              variants={itemVariants}
-              className="group flex flex-col p-6 bg-brand-bg border border-brand-gold/10 hover:border-brand-gold/40 transition-all duration-500 ease-luxury"
-            >
-              <div className="relative w-full aspect-square bg-[#0a0a0a] overflow-hidden mb-6 border border-brand-gold/5 flex items-center justify-center text-center p-4">
-                <div className="absolute inset-0 bg-gold-radial-glow opacity-25 group-hover:opacity-50 transition-all duration-500" />
-                <span className="text-[10px] tracking-[0.2em] text-brand-gold-light uppercase font-semibold">
-                  Tartaleta de Frutas
-                </span>
-              </div>
-              <h3 className="font-heading text-base tracking-wide text-brand-cream group-hover:text-brand-gold transition-colors duration-300 mb-2">
-                Mini Pavlova Premium
-              </h3>
-              <p className="text-xs text-brand-cream/70 font-light leading-relaxed font-body mb-4 flex-grow">
-                Merengue horneado lentamente, crujiente por fuera y tierno por dentro, con fresas, frambuesas y crema bourbon.
-              </p>
-              <span className="text-[9px] tracking-[0.15em] text-brand-gold-light uppercase font-medium italic mt-auto">
-                Textura: Aireado y Crocante
-              </span>
-            </motion.div>
+                <h3 className="font-heading text-base tracking-wide text-brand-cream group-hover:text-brand-gold transition-colors duration-300 mb-2">
+                  {item.nombre}
+                </h3>
+
+                <div className="w-10 h-[1px] bg-brand-gold/20 mb-3 group-hover:w-16 transition-all duration-500" />
+
+                <p className="text-xs text-brand-cream/70 font-light leading-relaxed font-body mb-6 flex-grow">
+                  {item.descripcion}
+                </p>
+
+                {/* Ficha Sensorial */}
+                <div className="mb-6 pt-3 border-t border-brand-gold/5 text-[9px] uppercase tracking-wide text-brand-gold-light italic">
+                  <strong className="text-brand-cream/30 font-medium font-body mr-1 not-italic">Sensación:</strong>
+                  {item.textura}
+                </div>
+
+                {/* Botón Añadir al Carrito */}
+                <button
+                  onClick={() => handleAdd(item, idx)}
+                  className="w-full py-2.5 border border-brand-gold/30 hover:border-brand-gold bg-transparent hover:bg-brand-gold text-brand-gold hover:text-brand-bg text-[9px] font-semibold uppercase tracking-[0.2em] transition-all duration-500 flex items-center justify-center gap-2 focus:outline-none"
+                >
+                  {addedIndex === idx ? (
+                    <>
+                      <span>¡Añadido!</span>
+                      <svg
+                        width="10"
+                        height="10"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </>
+                  ) : (
+                    <>
+                      <span>Añadir al Carrito</span>
+                      <svg
+                        width="10"
+                        height="10"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                      </svg>
+                    </>
+                  )}
+                </button>
+              </motion.div>
+            ))}
           </motion.div>
 
           {/* CTA a Galería completa */}
