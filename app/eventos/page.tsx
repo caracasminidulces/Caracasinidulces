@@ -452,7 +452,7 @@ export default function EventosPage() {
           </div>
 
           {/* Ficha e Información Gourmet con Animación Fluida */}
-          <div className="lg:col-span-6 flex flex-col justify-center min-h-[380px] relative overflow-hidden">
+          <div className="lg:col-span-6 flex flex-col justify-center min-h-[260px] relative overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeThemeId}
@@ -473,22 +473,6 @@ export default function EventosPage() {
                 <p className="text-xs md:text-sm text-brand-cream/80 font-light leading-relaxed mb-8 font-body">
                   {activeDetail.descripcion}
                 </p>
-
-                {/* Ficha Técnica Sensorial Gourmet */}
-                <div className="border-t border-b border-brand-gold/10 py-5 mb-8 flex flex-col gap-3 text-xs tracking-wide">
-                  <div className="grid grid-cols-12">
-                    <span className="col-span-3 text-brand-cream/40 font-medium uppercase font-body text-[10px] self-center">Sensación:</span>
-                    <span className="col-span-9 font-light italic text-[#FDF3BF] font-body">{activeDetail.textura}</span>
-                  </div>
-                  <div className="grid grid-cols-12">
-                    <span className="col-span-3 text-brand-cream/40 font-medium uppercase font-body text-[10px] self-center">Sabor:</span>
-                    <span className="col-span-9 font-light text-brand-cream/90 font-body">{activeDetail.sabor}</span>
-                  </div>
-                  <div className="grid grid-cols-12">
-                    <span className="col-span-3 text-brand-cream/40 font-medium uppercase font-body text-[10px] self-center">Montaje:</span>
-                    <span className="col-span-9 font-light text-brand-cream/90 font-body">{activeDetail.presentacion}</span>
-                  </div>
-                </div>
 
                 {/* Botón de Pedido por WhatsApp Temático */}
                 <div>

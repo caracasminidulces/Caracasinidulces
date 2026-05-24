@@ -115,7 +115,7 @@ export default function ContactoPage() {
               </h2>
 
               {/* Valor del Canal (Destacado) */}
-              <p className="text-lg md:text-xl font-light tracking-wide text-brand-cream group-hover:text-brand-gold transition-colors duration-300 mb-4 font-heading">
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl font-light tracking-wide text-brand-cream group-hover:text-brand-gold transition-colors duration-300 mb-4 font-heading break-all md:break-normal">
                 {info.valor}
               </p>
 
