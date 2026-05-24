@@ -49,7 +49,7 @@ export default function HeroSection() {
         {/* Resplandor dorado radial central y sutil para emular iluminación de galería de arte */}
         <div className="absolute inset-0 bg-gold-radial-glow opacity-80" />
 
-        {/* Cuadrícula geométrica sutil para reflejar simetría matemática */}
+        {/* Fina cuadrícula dorada para emular un estante de exhibición de pastelería de lujo */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(229,196,20,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(229,196,20,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] md:bg-[size:6rem_6rem]" />
 
         {/* Marcador de posición para video/imagen de fondo futura */}
@@ -108,10 +108,10 @@ export default function HeroSection() {
           className="text-4xl md:text-5xl lg:text-6xl font-light tracking-wide text-brand-cream leading-tight mb-8"
         >
           Arte Comestible & <br className="hidden md:block" />
-          <span className="text-gold-gradient font-medium italic">Simetría Perfecta</span>
+          <span className="text-gold-gradient font-medium italic">Elegancia Exquisita</span>
         </motion.h1>
 
-        {/* Separador Simétrico */}
+        {/* Separador de Oro Sutil */}
         <motion.div
           variants={lineVariants}
           className="w-24 md:w-32 h-[1px] bg-brand-gold-light opacity-60 mb-8 origin-center"
@@ -122,8 +122,8 @@ export default function HeroSection() {
           variants={itemVariants}
           className="text-sm md:text-base text-brand-cream/80 font-light leading-relaxed max-w-2xl mb-12 tracking-wide font-body"
         >
-          Bocados diseñados con rigurosidad geométrica y elaborados con ingredientes de origen exclusivo. 
-          Elevamos la repostería tradicional al estándar del arte contemporáneo.
+          Deliciosos minibocados modelados como auténticas obras de arte comestible. Elaborados con ingredientes 
+          de origen exclusivo para llevar la repostería fina al más alto estándar de sofisticación y sabor.
         </motion.p>
 
         {/* Botón de Acción Principal (CTA) con efecto de brillo metálico */}
@@ -137,9 +137,9 @@ export default function HeroSection() {
         </motion.div>
       </motion.div>
 
-      {/* 4. Pie de Sección - Indicador Simétrico de Desplazamiento */}
+      {/* 4. Pie de Sección - Indicador de Desplazamiento */}
       <footer className="relative z-10 w-full flex flex-col items-center justify-center py-4">
-        {/* Línea decorativa delgada que representa el equilibrio matemático */}
+        {/* Línea decorativa dorada delgada que guía al espectador */}
         <div className="w-[1px] h-12 bg-gradient-to-b from-brand-gold-light/40 to-transparent" />
         <motion.span
           initial={{ opacity: 0, y: -5 }}

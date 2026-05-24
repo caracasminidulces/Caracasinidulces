@@ -358,7 +358,7 @@ export default function EventosPage() {
           }}
           className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 bg-[#050505]/75 border border-brand-gold/10 p-6 md:p-10 backdrop-blur-md relative"
         >
-          {/* Esquinas ornamentales estilo simetría geométrica de lujo */}
+          {/* Esquinas ornamentales de estilo boutique de lujo */}
           <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-brand-gold/40" />
           <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-brand-gold/40" />
           <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-brand-gold/40" />
@@ -474,7 +474,7 @@ export default function EventosPage() {
                   {activeDetail.descripcion}
                 </p>
 
-                {/* Ficha Técnica Sensorial Simétrica */}
+                {/* Ficha Técnica Sensorial Gourmet */}
                 <div className="border-t border-b border-brand-gold/10 py-5 mb-8 flex flex-col gap-3 text-xs tracking-wide">
                   <div className="grid grid-cols-12">
                     <span className="col-span-3 text-brand-cream/40 font-medium uppercase font-body text-[10px] self-center">Sensación:</span>

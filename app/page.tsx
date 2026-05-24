@@ -226,7 +226,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Columna Frame Visual (Symmetrically balanced) */}
+          {/* Columna con encuadre visual de gala */}
           <div className="md:col-span-5 flex justify-center md:justify-end">
             <div className="relative w-full max-w-[280px] aspect-[4/5] border border-brand-gold/15 p-2 bg-[#040404] overflow-hidden group">
               <div className="absolute inset-0 bg-gold-radial-glow opacity-25 z-10 pointer-events-none" />

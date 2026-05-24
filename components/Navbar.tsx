@@ -56,7 +56,7 @@ export default function Navbar() {
         className="fixed top-0 left-0 right-0 z-50 w-full px-6 py-4 md:px-12 flex items-center justify-between backdrop-blur-md bg-[#010101]/60 border-b border-brand-gold/10"
       >
         {/* 1. Izquierda: Logo */}
-        <Link href="/" className="flex items-center group z-50">
+        <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center group z-50">
           <div className="relative h-12 w-16 md:h-14 md:w-20 flex items-center justify-center">
             <Image
               src="/images/logo.png"
@@ -215,6 +215,7 @@ export default function Navbar() {
                   >
                     <Link
                       href={link.href}
+                      onClick={() => setIsOpen(false)}
                       className="relative text-base uppercase tracking-[0.25em] font-semibold py-2 block text-center"
                       style={{ color: isActive ? "#E5C414" : "#FDF3BF" }}
                     >
@@ -242,6 +243,7 @@ export default function Navbar() {
                 href="https://wa.me/584141835422"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => setIsOpen(false)}
                 className="text-xs uppercase tracking-[0.2em] px-8 py-3 border border-brand-gold/40 hover:border-brand-gold text-brand-gold hover:text-brand-bg hover:bg-brand-gold transition-all duration-500 ease-luxury text-center w-full max-w-[280px]"
               >
                 Pedir Ahora
