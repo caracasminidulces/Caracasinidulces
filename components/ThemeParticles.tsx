@@ -46,22 +46,21 @@ export default function ThemeParticles({ theme }: ThemeParticlesProps) {
     setIsMounted(true);
   }, []);
 
-  // Generar partículas cuando cambia el tema o tras el montaje inicial
+  // Generar la estructura de partículas estable una sola vez tras el montaje en el cliente
   useEffect(() => {
     if (!isMounted) return;
     
-    const symbols = themeSymbols[theme] || ["✨", "✨"];
     const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
-    const count = isMobile ? 6 : 20; // Reducido en móvil para máximo rendimiento
-    const generated: Particle[] = Array.from({ length: count }).map((_, i) => {
-      const isUpward = theme === "san_valentin";
+    const count = isMobile ? 6 : 18; // 18 partículas estables para máximo rendimiento
+    
+    const initialParticles: Particle[] = Array.from({ length: count }).map((_, i) => {
       return {
         id: i,
-        symbol: symbols[Math.floor(Math.random() * symbols.length)],
+        symbol: "✨", // Símbolo por defecto inicial
         left: Math.random() * 100,
         size: Math.random() * 14 + 14,
-        delay: Math.random() * 5,
-        duration: Math.random() * 5 + (isUpward ? 5 : 7),
+        delay: Math.random() * 6,
+        duration: Math.random() * 6 + 8, // Movimiento constante majestuoso y lento
         rotation: Math.random() * 360,
         rotationDirection: Math.random() > 0.5 ? 180 : -180,
         glow: Math.random() > 0.7,
@@ -75,12 +74,32 @@ export default function ThemeParticles({ theme }: ThemeParticlesProps) {
       };
     });
     
-    setParticles(generated);
-  }, [theme, isMounted]);
+    // Asignar los símbolos reales del tema inicial
+    const symbols = themeSymbols[theme] || ["✨"];
+    const withSymbols = initialParticles.map(p => ({
+      ...p,
+      symbol: symbols[Math.floor(Math.random() * symbols.length)]
+    }));
+    
+    setParticles(withSymbols);
+  }, [isMounted]);
 
-  if (!isMounted) return null;
+  // Cambiar únicamente el símbolo del tema de manera reactiva (Metamorfosis con Cero Lag)
+  // Al no cambiar left, size, delay ni duration, el ciclo de animación Framer Motion no se reinicia.
+  useEffect(() => {
+    if (!isMounted || particles.length === 0) return;
+    
+    const symbols = themeSymbols[theme] || ["✨"];
+    
+    setParticles(prev => 
+      prev.map(p => ({
+        ...p,
+        symbol: symbols[Math.floor(Math.random() * symbols.length)]
+      }))
+    );
+  }, [theme]);
 
-  const isUpward = theme === "san_valentin";
+  if (!isMounted || particles.length === 0) return null;
 
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-10">
@@ -90,14 +109,14 @@ export default function ThemeParticles({ theme }: ThemeParticlesProps) {
           initial={{
             opacity: 0,
             left: `${p.left}%`,
-            y: isUpward ? "105vh" : "-10vh",
+            y: "-10vh",
             rotate: p.rotation,
             scale: 0.6,
             x: 0,
           }}
           animate={{
             opacity: [0, 0.8, 0.8, 0],
-            y: isUpward ? "-10vh" : "105vh",
+            y: "105vh",
             rotate: p.rotation + p.rotationDirection,
             scale: [0.6, 1, 1, 0.6],
             x: p.xSway,
@@ -113,7 +132,7 @@ export default function ThemeParticles({ theme }: ThemeParticlesProps) {
             fontSize: `${p.size}px`,
             filter: p.glow ? "drop-shadow(0 0 6px rgba(229, 196, 20, 0.25))" : "none",
             textShadow: "0 1px 2px rgba(0,0,0,0.15)",
-            willChange: "transform, opacity", // Promoción a capa de compositor GPU
+            willChange: "transform, opacity", // Promoción a GPU
           }}
         >
           {p.symbol}
