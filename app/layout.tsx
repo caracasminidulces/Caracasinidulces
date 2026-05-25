@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import PageTransitionProvider from "../components/PageTransitionProvider";
 import { CartProvider } from "../context/CartContext";
 import CartDrawer from "../components/CartDrawer";
+import AssistantChat from "../components/AssistantChat";
 import "./globals.css";
 
 // Fuente elegante para títulos (simetría inspirada en caligrafía romana)
@@ -75,6 +76,9 @@ export default function RootLayout({
 
           {/* Panel de carrito lateral */}
           <CartDrawer />
+
+          {/* Asistente Gastronómico de IA */}
+          <AssistantChat />
 
           {/* Pie de página global */}
           <Footer />

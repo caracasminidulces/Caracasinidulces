@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import ThemeParticles from "../../components/ThemeParticles";
+import EventPlannerWizard from "../../components/EventPlannerWizard";
 
 // Definición de todos los datos gourmet y poéticos para los Eventos y Subtemas de Cumpleaños
 interface ThemeDetail {
@@ -503,6 +504,9 @@ export default function EventosPage() {
             </AnimatePresence>
           </div>
         </motion.div>
+
+        {/* 7. Asistente de Planificación de Eventos */}
+        <EventPlannerWizard />
       </div>
     </div>
   );
