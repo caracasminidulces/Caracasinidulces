@@ -16,6 +16,198 @@ interface ClarificationContext {
   pendingItemName?: string;
 }
 
+// ==========================================
+// 1. Bespoke Gold Vector SVG Icons for Chat Messages (Replacing casual emojis)
+// ==========================================
+
+const IconBespokeSparkle = () => (
+  <span className="inline-flex items-center mx-0.5 align-middle select-none">
+    <svg className="w-3.5 h-3.5 text-brand-gold fill-current" viewBox="0 0 24 24">
+      <path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8z" />
+    </svg>
+  </span>
+);
+
+const IconBespokeChef = () => (
+  <span className="inline-flex items-center mx-0.5 align-middle select-none">
+    <svg className="w-3.5 h-3.5 text-brand-gold stroke-current fill-none" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M6 18V9a6 6 0 0 1 12 0v9M3 18h18v3H3zM12 3v3" />
+    </svg>
+  </span>
+);
+
+const IconBespokeCake = () => (
+  <span className="inline-flex items-center mx-0.5 align-middle select-none">
+    <svg className="w-3.5 h-3.5 text-brand-gold stroke-current fill-none" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 16H3V8l9-4 9 4zM3 12h18M12 4v4M12 12v4M7 8v2M17 8v2" />
+    </svg>
+  </span>
+);
+
+const IconBespokeStrawberry = () => (
+  <span className="inline-flex items-center mx-0.5 align-middle select-none">
+    <svg className="w-3.5 h-3.5 text-brand-gold stroke-current fill-none" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 2c1-1 3-1 4 0 1 1 0 3-1 4-2 3-5 7-7 9a6 6 0 0 1-8-8c2-2 6-5 9-7z" />
+      <circle cx="9" cy="11" r="0.5" fill="currentColor" />
+      <circle cx="12" cy="13" r="0.5" fill="currentColor" />
+      <circle cx="10" cy="15" r="0.5" fill="currentColor" />
+    </svg>
+  </span>
+);
+
+const IconBespokeCrown = () => (
+  <span className="inline-flex items-center mx-0.5 align-middle select-none">
+    <svg className="w-3.5 h-3.5 text-brand-gold stroke-current fill-none" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M2 4l3 12h14l3-12-6 7-4-7-4 7z" />
+      <path d="M3 20h18" />
+    </svg>
+  </span>
+);
+
+const IconBespokeCupcake = () => (
+  <span className="inline-flex items-center mx-0.5 align-middle select-none">
+    <svg className="w-3.5 h-3.5 text-brand-gold stroke-current fill-none" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M6 13a4 4 0 0 1 8 0v1h-8zm0 1h8v6a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2zM10 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" />
+    </svg>
+  </span>
+);
+
+const IconBespokeCart = () => (
+  <span className="inline-flex items-center mx-0.5 align-middle select-none">
+    <svg className="w-3.5 h-3.5 text-brand-gold stroke-current fill-none" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="9" cy="21" r="1" />
+      <circle cx="20" cy="21" r="1" />
+      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+    </svg>
+  </span>
+);
+
+const IconBespokePalette = () => (
+  <span className="inline-flex items-center mx-0.5 align-middle select-none">
+    <svg className="w-3.5 h-3.5 text-brand-gold stroke-current fill-none" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 14.7255 3.09032 17.1962 4.85857 19C5.02105 19.1652 5.09351 19.3951 5.05041 19.6212C4.94273 20.186 5.12784 20.7687 5.56569 21.1578C6.01258 21.555 6.62678 21.6806 7.1856 21.4883C7.4116 21.4105 7.66016 21.4428 7.86311 21.575C9.0716 22.3621 10.4907 22.7538 12 22Z" />
+      <circle cx="7.5" cy="10.5" r="1.5" fill="currentColor" />
+      <circle cx="11.5" cy="7.5" r="1.5" fill="currentColor" />
+      <circle cx="16.5" cy="9.5" r="1.5" fill="currentColor" />
+    </svg>
+  </span>
+);
+
+const IconBespokeFlower = () => (
+  <span className="inline-flex items-center mx-0.5 align-middle select-none">
+    <svg className="w-3.5 h-3.5 text-brand-gold stroke-current fill-none" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="3" />
+      <path d="M12 2a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4zm0 8a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4zm-8 2a4 4 0 0 1 4-4 4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4zm8 0a4 4 0 0 1 4-4 4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4z" />
+    </svg>
+  </span>
+);
+
+const IconBespokeDelivery = () => (
+  <span className="inline-flex items-center mx-0.5 align-middle select-none">
+    <svg className="w-3.5 h-3.5 text-brand-gold stroke-current fill-none" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="1" y="3" width="15" height="13" />
+      <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
+      <circle cx="5.5" cy="18.5" r="2.5" />
+      <circle cx="18.5" cy="18.5" r="2.5" />
+    </svg>
+  </span>
+);
+
+const IconBespokePhone = () => (
+  <span className="inline-flex items-center mx-0.5 align-middle select-none">
+    <svg className="w-3.5 h-3.5 text-brand-gold stroke-current fill-none" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+    </svg>
+  </span>
+);
+
+const IconBespokeRing = () => (
+  <span className="inline-flex items-center mx-0.5 align-middle select-none">
+    <svg className="w-3.5 h-3.5 text-brand-gold stroke-current fill-none" viewBox="0 0 24 24" strokeWidth="2">
+      <circle cx="12" cy="14" r="6" />
+      <path d="M12 8L12.5 6.5L14 6L12.5 5.5L12 4L11.5 5.5L10 6L11.5 6.5Z" fill="currentColor" />
+    </svg>
+  </span>
+);
+
+const IconBespokeGift = () => (
+  <span className="inline-flex items-center mx-0.5 align-middle select-none">
+    <svg className="w-3.5 h-3.5 text-brand-gold stroke-current fill-none" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="20 12 20 22 4 22 4 12" />
+      <rect x="2" y="7" width="20" height="5" />
+      <path d="M12 22V7" />
+      <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" />
+      <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
+    </svg>
+  </span>
+);
+
+const IconBespokeTree = () => (
+  <span className="inline-flex items-center mx-0.5 align-middle select-none">
+    <svg className="w-3.5 h-3.5 text-brand-gold stroke-current fill-none" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 2L3 17h18L12 2z" />
+      <path d="M12 17v5" />
+    </svg>
+  </span>
+);
+
+const IconBespokeClock = () => (
+  <span className="inline-flex items-center mx-0.5 align-middle select-none">
+    <svg className="w-3.5 h-3.5 text-brand-gold stroke-current fill-none" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10" />
+      <polyline points="12 6 12 12 16 14" />
+    </svg>
+  </span>
+);
+
+const IconBespokeRabbit = () => (
+  <span className="inline-flex items-center mx-0.5 align-middle select-none">
+    <svg className="w-3.5 h-3.5 text-brand-gold stroke-current fill-none" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M10 5a2 2 0 0 1 4 0v4H10V5z" />
+      <path d="M16 4a2 2 0 0 1 4 0v5H16V4z" />
+      <path d="M19 13a6 6 0 1 1-12 0h12z" />
+    </svg>
+  </span>
+);
+
+// Mapeo e interpolador de emojis a SVGs vectorizados
+const renderBespokeMessage = (text: string): React.ReactNode[] => {
+  const emojiMap: Record<string, React.ComponentType> = {
+    "✨": IconBespokeSparkle,
+    "🧑‍🍳": IconBespokeChef,
+    "🍰": IconBespokeCake,
+    "🍓": IconBespokeStrawberry,
+    "👑": IconBespokeCrown,
+    "🧁": IconBespokeCupcake,
+    "🛒": IconBespokeCart,
+    "🎨": IconBespokePalette,
+    "🌸": IconBespokeFlower,
+    "🚗": IconBespokeDelivery,
+    "📞": IconBespokePhone,
+    "💍": IconBespokeRing,
+    "🎁": IconBespokeGift,
+    "🎄": IconBespokeTree,
+    "⏳": IconBespokeClock,
+    "🐰": IconBespokeRabbit,
+  };
+
+  const regex = new RegExp(`(${Object.keys(emojiMap).join("|")})`, "g");
+  const parts = text.split(regex);
+
+  return parts.map((part, index) => {
+    const IconComponent = emojiMap[part];
+    if (IconComponent) {
+      const Component = IconComponent;
+      return <Component key={index} />;
+    }
+    return part;
+  });
+};
+
+// ==========================================
+// 2. Catálogo de Dulces y Definición
+// ==========================================
+
 const ACTIVE_SWEETS = [
   {
     id: "polvorosas",
@@ -33,7 +225,7 @@ const ACTIVE_SWEETS = [
     imagen: "/images/dulces/brookies.png",
     descripcion: "La fusión definitiva de dos mundos: una base densa y húmeda de brownie de chocolate belga fusionada con una cubierta crocante de galleta con chispas de chocolate.",
     textura: "Corazón súper meloso con superficie crujiente",
-    keywords: ["brookie", "brookies", "bruki", "brukis", "brownie galleta"]
+    keywords: ["broki", "brokis", "brookie", "brookies", "brownie galleta"]
   },
   {
     id: "craqueladas",
@@ -79,7 +271,7 @@ export default function AssistantChat() {
   const [messages, setMessages] = useState<Message[]>([
     {
       sender: "bot",
-      text: "¡Hola! ✨ Soy tu Asistente Gastronómico de Caracas Mini Dulces. 🧑‍🍳🍰\n\nEstoy aquí para guiarte en tu pedido de alta repostería. Puedes hacerme preguntas sobre Victoria, nuestro menú, o pedirme directamente que agregue dulces a tu carrito (ej. *'añade 6 brookies'* o *'quiero polvorosas'*).",
+      text: "¡Hola! ✨ Soy tu Asistente Gastronómico de Caracas Mini Dulces. 🧑‍🍳🍰\n\nEstoy aquí para guiarte en tu pedido de alta repostería. Puedes hacerme preguntas sobre Victoria, nuestro menú de eventos, si hacemos delivery, o pedirme directamente que agregue dulces a tu carrito (ej. *'añade 6 brookies'* o *'quiero polvorosas'*).",
       timestamp: new Date()
     }
   ]);
@@ -104,11 +296,9 @@ export default function AssistantChat() {
   };
 
   const extractQuantity = (text: string): number => {
-    // Buscar números explícitos (ej. 3, 12, 24)
     const numMatch = text.match(/\b\d+\b/);
     if (numMatch) return parseInt(numMatch[0]);
 
-    // Buscar palabras numéricas en español
     if (text.includes("una docena") || text.includes("1 docena") || text.includes("docena")) return 12;
     if (text.includes("media docena") || text.includes("media")) return 6;
     if (text.includes("un par") || text.includes("dos")) return 2;
@@ -131,14 +321,14 @@ export default function AssistantChat() {
     setMessages((prev) => [...prev, newMsg]);
     setInputText("");
 
-    // Procesar la respuesta del bot
+    // Procesar la respuesta del bot con un retardo orgánico pero reactivo (600ms en lugar del antiguo retraso de 6s)
     setTimeout(() => {
       const responseText = processResponse(userText);
       setMessages((prev) => [
         ...prev,
         { sender: "bot", text: responseText, timestamp: new Date() }
       ]);
-    }, 6000); // 600ms de respuesta simulada
+    }, 600);
   };
 
   const processResponse = (text: string): string => {
@@ -179,7 +369,7 @@ export default function AssistantChat() {
         return `¡Un postre sublime de autor! He agregado **${clarification.pendingQuantity}x ${item.nombre}** (disco de merengue majestuoso) al carrito. ¡Tu mesa se verá increíble! 👑🧁`;
       }
 
-      return "Disculpa, no logré entender si prefieres la **Mini Pavlova de Gala** (individual) o la **Gran Pavlova de Autor** (grande para compartir). ¿Cuál de las dos te gustaría que añadamos?";
+      return "Disculpa, para procesar tu orden correctamente necesito saber: ¿prefieres la **Mini Pavlova de Gala** (bocado individual, bocado de gala) o la **Gran Pavlova de Autor** (grande para compartir)? ¿Cuál de las dos te gustaría que añadamos? 🍓✨";
     }
 
     // 2. PARSEAR INTENCIONES DE COMPRA
@@ -226,16 +416,31 @@ export default function AssistantChat() {
       }
     }
 
-    // 3. BASE DE CONOCIMIENTO GENERAL (RESPUESTAS A PREGUNTAS)
-    
+    // 3. BASE DE CONOCIMIENTO GENERAL (RESPUESTAS A PREGUNTAS CLAVE)
+
+    // Sobre Eventos que hace Victoria
+    if (raw.includes("evento") || raw.includes("que hace victoria") || raw.includes("cuales haces") || raw.includes("tipo de evento") || raw.includes("boda") || raw.includes("bautizo") || raw.includes("comunion") || raw.includes("babyshower") || raw.includes("tematico")) {
+      return "**Victoria** realiza **todo tipo de eventos** y se adapta por completo a lo que tú como cliente necesites. ✨🎨\n\nDiseñamos mesas de dulces y experiencias culinarias personalizadas para cualquier celebración en Caracas:\n* **Cumpleaños de cualquier temática:** Victoria da vida a tus sueños más creativos modelando figuras personalizadas a mano. Algunos ejemplos son nuestros populares showrooms de Harry Potter, Aladdin, Alicia, Dinosaurios, Encanto, Fresita, Fútbol o Toy Story. 🎂\n* **Bodas & Compromisos:** Elegancia sublime y diseño de alta costura para tu gran día. 💍\n* **Celebraciones Familiares:** Bautizos, Primeras Comuniones, Baby Showers y aniversarios de ensueño. 🍼🌸\n* **Ediciones Especiales & Festividades:** Colecciones estacionales para Navidad, Pascuas, San Valentín y Halloween. 🎄🐰\n\nNo importa el tema o el tamaño de tu celebración, **Victoria se ajusta a lo que tú necesites** para hacerla inolvidable. Todas las piezas y detalles se modelan de forma 100% manual con ingredientes premium.\n\n¿Te gustaría planificar el tuyo? Te sugiero usar nuestro **Event Planner Wizard** en la sección de **Eventos** o escribirnos directamente al WhatsApp para diseñar tu cotización a medida. 📞🍰";
+    }
+
+    // Sobre Envío / Delivery / Transporte Seguro
+    if (raw.includes("delivery") || raw.includes("envio") || raw.includes("envian") || raw.includes("entreg") || raw.includes("lleg") || raw.includes("trae") || raw.includes("repart") || raw.includes("mand")) {
+      return "¡Por supuesto! 🚗✨ Coordinamos **envíos seguros y climatizados** a toda la zona metropolitana de Caracas.\n\nPara garantizar que tus mini dulces y pavlovas de gala lleguen en un estado impecable (sin que el calor afecte la crema o la simetría del merengue), los transportamos en **vehículos especialmente acondicionados** para mantener la temperatura óptima. ❄️🍰\n\nTambién ofrecemos la opción de **pick-up / retiro directo** por nuestro atelier en Caracas si prefieres coordinarlo tú mismo. Todos los pedidos se entregan en cajas de presentación de lujo con lazos dorados, listos para tu mesa de gala. 👑🎁";
+    }
+
+    // Sobre Ubicación / Tienda Física / Atelier
+    if (raw.includes("donde estan") || raw.includes("ubicacion") || raw.includes("tienda") || raw.includes("local") || raw.includes("direccion") || raw.includes("fisic") || raw.includes("taller") || raw.includes("atelier") || raw.includes("caracas")) {
+      return "Nos encontramos en **Caracas**, operando bajo el concepto exclusivo de **Atelier boutique de alta repostería** por encargo. 🧑‍🍳✨\n\n**No disponemos de una tienda física de mostrador o vitrina tradicional.** Esto es una decisión de diseño culinario deliberada para garantizar la excelencia: cada bocado, polvorosa o pavlova de autor se elabora desde cero **únicamente bajo pedido previo**.\n\nDe esta forma, te aseguramos una frescura absoluta en boca y un modelado impecable para tu evento. ¡Coordinamos entregas directas a tu celebración o retiro por nuestro atelier! 🚗🧁";
+    }
+
+    // Sobre Tiempos de Entrega / Antelación
+    if (raw.includes("antelacion") || raw.includes("tiempo") || raw.includes("cuando pido") || raw.includes("con cuanto") || raw.includes("anticip") || raw.includes("dias")) {
+      return "Para asegurar el nivel de detalle y frescura que nos caracteriza, manejamos los siguientes tiempos de anticipación: 🧑‍🍳⏳\n\n* **Menú de Compra Rápida (Polvorosas, Brookies, Craqueladas y Pavlovas):** Recomendamos realizar el pedido con **3 a 5 días de anticipación** directamente en el carrito.\n* **Mesas de Dulces Temáticas y Tortas de Gala:** Al requerir modelado de azúcar manual y diseño conceptual, solicitamos reservar con **1 a 2 semanas de antelación**.\n\nSi tienes una urgencia de última hora, ¡escríbenos al WhatsApp! Haremos todo lo posible en nuestro recetario para asistirte. 📞✨";
+    }
+
     // Sobre Victoria / Repostera
     if (raw.includes("victoria") || raw.includes("repostera") || raw.includes("creadora") || raw.includes("quien es") || raw.includes("quien hace")) {
       return "**Victoria** es la mente y las manos creadoras de Caracas Mini Dulces. 🧑‍🍳✨\n\nElla es una apasionada de la repostería artística y detallista. Su filosofía se basa en el **modelado 100% manual**, asegurando que cada figura o rosa de azúcar sea una pieza única con alma, combinando un diseño visual simétrico con texturas y sabores gourmet extraordinarios.";
-    }
-
-    // Sobre Envío / Delivery / Dónde están
-    if (raw.includes("envio") || raw.includes("delivery") || raw.includes("donde estan") || raw.includes("ubicacion") || raw.includes("caracas") || raw.includes("entregas")) {
-      return "¡Hola! Nos encontramos en **Caracas**. Coordinamos entregas personalizadas y envíos seguros a toda la zona metropolitana de Caracas para asegurar que tus mini dulces y pavlovas de gala lleguen en un estado impecable a tu evento. 🚗🍰";
     }
 
     // Sobre Precios / Presupuestos / Mesa de Dulces
@@ -264,7 +469,7 @@ export default function AssistantChat() {
     }
 
     // Fallback general gourmet
-    return "Mmm, entiendo lo que buscas, pero no dispongo de esa opción específica en mi recetario de respuestas rápidas. 🧑‍🍳🧁\n\n¿Te gustaría que añadamos alguna de nuestras especialidades al carrito (como las **Polvorosas Imperiales** o las **Mini Pavlovas**), o prefieres que coordinemos una cotización directa en WhatsApp con Victoria para personalizar tus postres?";
+    return "Entiendo lo que buscas, pero no dispongo de esa opción específica en mi recetario de respuestas rápidas. 🧑‍🍳🧁\n\n¿Te gustaría que añadamos alguna de nuestras especialidades al carrito (como las **Polvorosas Imperiales** o las **Mini Pavlovas**), o prefieres que coordinemos una cotización directa en WhatsApp con Victoria para personalizar tus postres?";
   };
 
   return (
@@ -288,15 +493,13 @@ export default function AssistantChat() {
             {/* Cabecera del chat */}
             <div className="px-5 py-4 border-b border-brand-gold/10 flex items-center justify-between bg-[#080808]/90">
               <div className="flex items-center gap-3">
-                {/* Manga repostera animada miniatura */}
-                <div className="w-8 h-8 rounded-full border border-brand-gold/25 flex items-center justify-center bg-brand-gold/5 text-brand-gold">
-                  <svg className="w-5.5 h-5.5" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M48 10C49 8.5 51.5 7.5 53.5 9.5C55.5 11.5 54.5 14 53 15C50 17 48 15 48 10Z" />
-                    <path d="M44 14C45 12 47 11 48 12C49 13 48 15 46 16" />
-                    <path d="M45 15L19 41C18 42 16.5 44 16 46L15 48L17 47C19 46.5 21 45 22 44L48 18L45 15Z" />
-                    <path d="M15 48L11 52L8 50L10 46L14 42" />
-                    <path d="M7 53C6.5 54 6.5 55.5 7.5 56.5C8.5 57.5 10 57.5 11 57C12 56.5 12.5 55 12 54" />
-                  </svg>
+                {/* Logotipo oficial de la marca en círculo de oro */}
+                <div className="w-8 h-8 rounded-full border border-brand-gold/25 flex items-center justify-center bg-[#050505] overflow-hidden">
+                  <img
+                    src="/images/logo.png"
+                    alt="Caracas Mini Dulces Logo"
+                    className="w-6 h-6 object-contain"
+                  />
                 </div>
                 <div className="flex flex-col">
                   <span className="text-[11px] font-heading font-medium tracking-wide text-brand-cream">
@@ -334,7 +537,7 @@ export default function AssistantChat() {
                           : "bg-brand-gold/10 border border-brand-gold/25 text-brand-cream rounded-none rounded-tl-lg rounded-bl-lg"
                       } whitespace-pre-wrap`}
                     >
-                      {msg.text}
+                      {isBot ? renderBespokeMessage(msg.text) : msg.text}
                     </div>
                   </div>
                 );
@@ -368,13 +571,13 @@ export default function AssistantChat() {
         )}
       </AnimatePresence>
 
-      {/* Botón Flotante (Pulsante e interactivo con Manga Repostera SVG) */}
+      {/* Botón Flotante (Pulsante e interactivo con el Logo Oficial de la Marca) */}
       <motion.button
         onClick={() => setIsOpen((prev) => !prev)}
         className="w-14 h-14 rounded-full bg-[#050505] border border-brand-gold text-brand-gold flex items-center justify-center shadow-[0_0_20px_rgba(229,196,20,0.15)] cursor-pointer focus:outline-none relative group overflow-hidden"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        aria-label="Abrir asistente de pastelería"
+        aria-label="Abrir asistente virtual"
       >
         {/* Efecto de resplandor e iluminación de fondo */}
         <div className="absolute inset-0 bg-brand-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
@@ -382,33 +585,14 @@ export default function AssistantChat() {
         {/* Efecto de latido / pulso circular elegante */}
         <div className="absolute -inset-1 border border-brand-gold/20 rounded-full animate-ping opacity-25 pointer-events-none -z-10" />
 
-        {/* Ícono Vectorizado de Manga Repostera de Alta Fidelidad */}
-        <svg 
-          className="w-7 h-7 transform group-hover:rotate-12 transition-transform duration-500" 
-          viewBox="0 0 64 64" 
-          fill="none" 
-          stroke="currentColor" 
-          strokeWidth="2.5" 
-          strokeLinecap="round" 
-          strokeLinejoin="round"
-        >
-          {/* Nudo/Lazo superior de la manga */}
-          <path d="M48 10C49 8.5 51.5 7.5 53.5 9.5C55.5 11.5 54.5 14 53 15C50 17 48 15 48 10Z" />
-          <path d="M44 14C45 12 47 11 48 12C49 13 48 15 46 16" />
-          
-          {/* Cuerpo principal de la manga */}
-          <path d="M45 15L19 41C18 42 16.5 44 16 46L15 48L17 47C19 46.5 21 45 22 44L48 18L45 15Z" />
-          
-          {/* Texturas de pliegues en la manga */}
-          <path d="M40 20C36 21 32 23 28 27" opacity="0.6" strokeDasharray="2 2" />
-          <path d="M35 25C32 26 29 28 26 31" opacity="0.6" strokeDasharray="2 2" />
-          
-          {/* Boquilla de metal al final */}
-          <path d="M15 48L11 52L8 50L10 46L14 42" />
-          
-          {/* Delicada espiral / copo de crema saliendo */}
-          <path d="M7 53C6.5 54 6.5 55.5 7.5 56.5C8.5 57.5 10 57.5 11 57C12 56.5 12.5 55 12 54" />
-        </svg>
+        {/* Logotipo original en miniatura de alta resolución */}
+        <div className="relative w-9 h-9 overflow-hidden transition-transform duration-500 ease-luxury group-hover:scale-110">
+          <img
+            src="/images/logo.png"
+            alt="Caracas Mini Dulces Logo"
+            className="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(229,196,20,0.35)]"
+          />
+        </div>
       </motion.button>
     </div>
   );
