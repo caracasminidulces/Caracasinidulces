@@ -53,7 +53,7 @@ export default function CartDrawer() {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.4 }}
           onClick={() => setIsCartOpen(false)}
-          className="fixed inset-0 z-50 bg-[#000000]/70 backdrop-blur-sm cursor-pointer"
+          className="fixed inset-0 z-[9998] bg-[#000000]/70 backdrop-blur-sm cursor-pointer"
         />
       )}
 
@@ -65,7 +65,7 @@ export default function CartDrawer() {
           animate={{ x: 0 }}
           exit={{ x: "100%" }}
           transition={{ type: "spring", damping: 30, stiffness: 220 }}
-          className="fixed top-0 right-0 z-50 w-full max-w-md h-screen bg-[#010101]/95 border-l border-brand-gold/15 shadow-gold-md flex flex-col justify-between"
+          className="fixed top-0 right-0 z-[9999] w-full max-w-md h-[100dvh] bg-[#010101]/95 border-l border-brand-gold/15 shadow-gold-md flex flex-col justify-between"
         >
             {/* Resplandor dorado decorativo de fondo */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-brand-gold/[0.015] blur-3xl pointer-events-none rounded-full" />

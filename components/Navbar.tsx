@@ -53,7 +53,7 @@ export default function Navbar() {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed top-0 left-0 right-0 z-50 w-full px-6 py-4 md:px-12 flex items-center justify-between backdrop-blur-md bg-[#010101]/60 border-b border-brand-gold/10"
+        className="fixed top-0 left-0 right-0 z-[9999] w-full px-6 py-4 md:px-12 flex items-center justify-between backdrop-blur-md bg-[#010101]/60 border-b border-brand-gold/10"
       >
         {/* 1. Izquierda: Logo */}
         <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center group z-50">
@@ -148,7 +148,7 @@ export default function Navbar() {
           {/* Botón de Menú Hamburguesa Móvil */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="flex md:hidden z-50 items-center justify-center p-2 focus:outline-none"
+            className="flex md:hidden z-[10000] items-center justify-center p-2 focus:outline-none"
             aria-label="Toggle menu"
           >
             <svg width="23" height="23" viewBox="0 0 23 23">
@@ -191,7 +191,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: "-100%" }}
             transition={{ type: "spring", bounce: 0, duration: 0.55 }}
-            className="fixed inset-0 z-40 w-full h-screen bg-[#010101]/98 backdrop-blur-2xl flex flex-col justify-between px-8 py-24 border-b border-brand-gold/15"
+            className="fixed inset-0 z-[9998] w-full h-screen bg-[#010101]/98 backdrop-blur-2xl flex flex-col justify-between px-8 py-24 border-b border-brand-gold/15"
           >
             {/* Luz dorada sutil en el fondo del drawer */}
             <div className="absolute inset-0 bg-gold-radial-glow opacity-25 pointer-events-none" />

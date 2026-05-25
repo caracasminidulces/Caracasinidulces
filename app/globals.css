@@ -15,6 +15,11 @@
     font-family: var(--font-cinzel), serif;
     letter-spacing: 0.05em;
   }
+
+  p {
+    text-align: justify;
+    text-justify: inter-word;
+  }
 }
 
 @layer utilities {
