@@ -131,11 +131,6 @@ export default function Home() {
                   {item.descripcion}
                 </p>
 
-                {/* Ficha Sensorial */}
-                <div className="mb-6 pt-3 border-t border-brand-gold/5 text-[9px] uppercase tracking-wide text-brand-gold-light italic">
-                  <strong className="text-brand-cream/30 font-medium font-body mr-1 not-italic">Sensación:</strong>
-                  {item.textura}
-                </div>
 
                 {/* Botón Añadir al Carrito */}
                 <button

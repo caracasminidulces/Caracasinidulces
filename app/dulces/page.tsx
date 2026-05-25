@@ -197,17 +197,9 @@ export default function DulcesPage() {
                         {item.descripcion}
                       </p>
 
-                      {/* Ficha Sensorial (Rico, apetitoso y de alta gama) */}
+                      {/* Controles de Compra */}
                       <div className="mt-auto pt-4 border-t border-brand-gold/5 flex flex-col gap-4">
-                        <div className="text-[10px] tracking-wide text-brand-gold-light uppercase flex items-center justify-between">
-                          <div>
-                            <strong className="text-brand-cream/40 font-medium font-body mr-1">Sensación:</strong> 
-                            <span className="font-light italic text-[#FDF3BF]/90">{item.textura}</span>
-                          </div>
-                        </div>
-
-                        {/* Controles de Compra */}
-                        <div className="flex gap-3 items-center mt-2">
+                        <div className="flex gap-3 items-center">
                           {/* Selector de cantidad */}
                           <div className="flex items-center border border-brand-gold/15 bg-[#010101] select-none">
                             <button
