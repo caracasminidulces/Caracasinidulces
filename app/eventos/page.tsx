@@ -45,7 +45,11 @@ const themeDetails: Record<string, ThemeDetail> = {
     textura: "Chocolate crujiente con rellenos melosos y especiados que evocan la calidez hogareña.",
     sabor: "Cacao belga, canela de Ceilán, ralladura de naranja confitada y frutos secos selectos.",
     presentacion: "Elegantes pedestales de madera noble y follaje de pino natural aromático.",
-    imagenes: ["/images/eventos/navidad.png"],
+    imagenes: [
+      "/images/eventos/navidad.png",
+      "/images/eventos/navidad_2.png",
+      "/images/eventos/navidad_3.png"
+    ],
   },
   // Pascuas
   pascuas: {
@@ -55,7 +59,11 @@ const themeDetails: Record<string, ThemeDetail> = {
     textura: "Chocolate con leche de quiebre perfecto y nubes de malvavisco artesanal súper esponjosas.",
     sabor: "Chocolate con leche al 40%, vainilla de Madagascar y malvavisco artesanal perfumado.",
     presentacion: "Caja de regalo blanca de diseño minimalista con visor de acetato de alta resistencia.",
-    imagenes: ["/images/eventos/pascuas.png"],
+    imagenes: [
+      "/images/eventos/pascuas.png",
+      "/images/eventos/pascuas_2.png",
+      "/images/eventos/pascuas_3.png"
+    ],
   },
   // San Valentín
   san_valentin: {
@@ -75,7 +83,10 @@ const themeDetails: Record<string, ThemeDetail> = {
     textura: "Brownie denso y húmedo con superficie craquelada y frosting de vainilla cremoso.",
     sabor: "Doble chocolate fudge, un toque sutil de flor de sal y esencia de calabaza especiada.",
     presentacion: "Caja de diseño exclusivo con detalles de hojas de maíz negras y verdes.",
-    imagenes: ["/images/eventos/halloween.png"],
+    imagenes: [
+      "/images/eventos/halloween.png",
+      "/images/eventos/halloween_2.png"
+    ],
   },
   // Baby Shower
   babyshower: {
