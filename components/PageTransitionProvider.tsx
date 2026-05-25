@@ -12,6 +12,9 @@ export default function PageTransitionProvider({ children }: PageTransitionProvi
 
   const handleFirstLoadComplete = () => {
     setIsFirstLoad(false);
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("first-load-complete"));
+    }
   };
 
   return (

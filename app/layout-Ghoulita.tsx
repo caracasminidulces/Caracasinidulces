@@ -8,7 +8,7 @@ import CartDrawer from "../components/CartDrawer";
 import AssistantChat from "../components/AssistantChat";
 import "./globals.css";
 
-// Fuente elegante para títulos (diseño inspirado en caligrafía romana)
+// Fuente elegante para títulos (simetría inspirada en caligrafía romana)
 const cinzel = Cinzel({
   subsets: ["latin"],
   variable: "--font-cinzel",
@@ -26,7 +26,7 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: "Caracas Mini Dulces | Alta Repostería de Lujo y Arte Comestible",
-  description: "Boutique de repostería fina de alta gama en Caracas. Arte comestible, exquisita elegancia y sabores gourmet exclusivos.",
+  description: "Boutique de repostería fina de alta gama en Caracas. Arte comestible, diseño de simetría geométrica y sabores gourmet exclusivos.",
   keywords: [
     "Caracas Mini Dulces",
     "alta repostería",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://caracasminidulces.com"),
   openGraph: {
     title: "Caracas Mini Dulces | Alta Repostería",
-    description: "Exclusiva boutique de arte dulce y sabores gourmet sublimes en Caracas.",
+    description: "Exclusiva boutique de arte dulce y simetría geométrica comestible en Caracas.",
     url: "https://caracasminidulces.com",
     siteName: "Caracas Mini Dulces",
     locale: "es_VE",

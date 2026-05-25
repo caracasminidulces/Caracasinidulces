@@ -61,7 +61,7 @@ export default function PipingOverlay({ onComplete }: PipingOverlayProps) {
           {/* Luz dorada ambiental muy sutil de fondo */}
           <div className="absolute inset-0 bg-gold-radial-glow opacity-30 pointer-events-none" />
 
-          {/* Grid geométrico sutil para reflejar simetría */}
+          {/* Grid ornamental sutil */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(229,196,20,0.01)_1px,transparent_1px),linear-gradient(to_bottom,rgba(229,196,20,0.01)_1px,transparent_1px)] bg-[size:3rem_3rem] opacity-40 pointer-events-none" />
 
           {/* Lienzo Principal de Transición con la relación de aspecto del Logotipo */}

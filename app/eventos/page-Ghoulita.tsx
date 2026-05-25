@@ -206,7 +206,7 @@ const themeDetails: Record<string, ThemeDetail> = {
   },
 };
 
-// Clases de Tailwind para resplandores temáticos según el tema activo
+// Clases de Tailwind para resplandores cromáticos según el tema activo
 const themeGlowStyles: Record<string, string> = {
   navidad: "from-emerald-950/20 via-red-950/15 to-brand-bg shadow-[0_0_100px_rgba(16,185,129,0.06)] border-emerald-500/20",
   pascuas: "from-purple-950/20 via-emerald-950/10 to-brand-bg shadow-[0_0_100px_rgba(167,139,250,0.06)] border-purple-500/20",
@@ -228,7 +228,6 @@ export default function EventosPage() {
   const [mainTheme, setMainTheme] = useState("cumpleanos");
   const [birthdaySubtheme, setBirthdaySubtheme] = useState("hp");
   const [activeImageIndex, setActiveImageIndex] = useState(0);
-  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
   const activeThemeId = mainTheme === "cumpleanos" ? birthdaySubtheme : mainTheme;
   const activeDetail = themeDetails[activeThemeId] || themeDetails.hp;
@@ -251,9 +250,14 @@ export default function EventosPage() {
     setActiveImageIndex(0);
   };
 
+  // Crear el link de WhatsApp personalizado para cada dulce temático
+  const whatsappUrl = `https://wa.me/584141835422?text=Hola!%20Me%20gustar%C3%ADa%20solicitar%20un%20presupuesto%20para%20el%20evento%20tem%C3%A1tico%20de%20*${encodeURIComponent(
+    activeDetail.titulo
+  )}*%20(${encodeURIComponent(activeDetail.subtitulo)})`;
+
   return (
     <div className="relative w-full min-h-screen bg-brand-bg text-brand-cream py-16 md:py-24 transition-colors duration-1000 overflow-hidden">
-      {/* 1. Fondo de gradiente temático dinámico adaptativo */}
+      {/* 1. Fondo de gradiente cromático dinámico adaptativo */}
       <div
         className={`absolute inset-0 bg-gradient-to-tr transition-all duration-1000 ease-in-out pointer-events-none z-0 ${currentGlowClass}`}
       />
@@ -283,7 +287,7 @@ export default function EventosPage() {
           <div className="w-20 h-[1px] bg-brand-gold mx-auto mb-6" />
           <p className="text-sm md:text-base text-brand-cream/80 font-light leading-relaxed">
             Repostería de lujo que transforma tus momentos más importantes. Selecciona un evento
-            para deleitarte con nuestras colecciones de gala y descubrir nuestros dulces temáticos diseñados a medida.
+            para sumergirte en su atmósfera cromática y descubrir nuestros dulces temáticos diseñados a medida.
           </p>
         </motion.div>
 
@@ -374,10 +378,7 @@ export default function EventosPage() {
 
           {/* Contenedor de la Imagen con Galería Interactiva */}
           <div className="lg:col-span-6 flex flex-col items-center justify-center">
-            <div 
-              onClick={() => setIsLightboxOpen(true)}
-              className="relative w-full aspect-square bg-[#0c0c0c] border border-brand-gold/15 overflow-hidden shadow-2xl cursor-zoom-in group/image"
-            >
+            <div className="relative w-full aspect-square bg-[#0c0c0c] border border-brand-gold/15 overflow-hidden shadow-2xl">
               
               {/* Imagen Principal con Animación Cross-Fade Cinemática */}
               <AnimatePresence mode="popLayout">
@@ -401,13 +402,6 @@ export default function EventosPage() {
               </AnimatePresence>
               
               <div className="absolute inset-0 bg-gradient-to-t from-[#010101]/40 via-transparent to-transparent pointer-events-none" />
-
-              {/* Icono de Lupa / Zoom de Gala */}
-              <div className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full border border-brand-gold/20 bg-black/40 flex items-center justify-center text-brand-gold opacity-0 group-hover/image:opacity-100 transition-opacity duration-300 shadow-md">
-                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                  <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
-                </svg>
-              </div>
 
               {/* Flechas de Navegación Laterales Flotantes */}
               {activeDetail.imagenes.length > 1 && (
@@ -483,24 +477,28 @@ export default function EventosPage() {
                 <span className="text-[10px] uppercase tracking-[0.25em] text-brand-gold font-semibold mb-2">
                   {activeDetail.subtitulo}
                 </span>
-                <h2 className="text-2xl md:text-3xl font-light tracking-wide text-brand-cream mb-4 font-heading">
+                <h2 className="text-2xl md:text-3xl font-light tracking-wide text-brand-cream mb-4">
                   {activeDetail.titulo}
                 </h2>
                 <div className="w-16 h-[1px] bg-brand-gold mb-6" />
                 
-                <p className="text-xs md:text-sm text-brand-cream/80 font-light leading-relaxed mb-4 font-body">
+                <p className="text-xs md:text-sm text-brand-cream/80 font-light leading-relaxed mb-8 font-body">
                   {activeDetail.descripcion}
                 </p>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-body border-t border-brand-gold/10 pt-4 mt-2">
-                  <div>
-                    <span className="text-brand-gold font-semibold uppercase tracking-wider block mb-1 text-[10px]">Textura</span>
-                    <span className="text-brand-cream/70 font-light">{activeDetail.textura}</span>
-                  </div>
-                  <div>
-                    <span className="text-brand-gold font-semibold uppercase tracking-wider block mb-1 text-[10px]">Sabor</span>
-                    <span className="text-brand-cream/70 font-light">{activeDetail.sabor}</span>
-                  </div>
+                {/* Botón de Pedido por WhatsApp Temático */}
+                <div>
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-3 text-xs uppercase tracking-[0.2em] px-6 py-3 border border-brand-gold text-brand-gold hover:text-brand-bg hover:bg-brand-gold transition-all duration-500 ease-luxury font-medium"
+                  >
+                    <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.003 5.324 5.328 0 11.822 0c3.148.001 6.107 1.227 8.331 3.453 2.224 2.227 3.45 5.187 3.447 8.335-.006 6.502-5.332 11.827-11.828 11.827-2.002-.001-3.972-.51-5.733-1.485L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.725 1.45 5.389 0 9.773-4.381 9.777-9.772.002-2.61-1.01-5.063-2.851-6.907C16.4 2.08 13.945 1.066 11.336 1.065 5.948 1.065 1.564 5.447 1.56 10.839c-.001 1.637.447 3.235 1.3 4.65L1.88 20.89l5.59-1.466z" />
+                    </svg>
+                    Solicitar Presupuesto
+                  </a>
                 </div>
               </motion.div>
             </AnimatePresence>
@@ -510,125 +508,6 @@ export default function EventosPage() {
         {/* 7. Asistente de Planificación de Eventos */}
         <EventPlannerWizard />
       </div>
-
-      {/* Lightbox de Lujo a Pantalla Completa para Galería Inmersiva */}
-      <AnimatePresence>
-        {isLightboxOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black/95 backdrop-blur-md select-none font-body"
-          >
-            {/* Esquinas ornamentales de lujo del Lightbox */}
-            <div className="absolute top-6 left-6 w-4 h-4 border-t border-l border-brand-gold/30" />
-            <div className="absolute top-6 right-6 w-4 h-4 border-t border-r border-brand-gold/30" />
-            <div className="absolute bottom-6 left-6 w-4 h-4 border-b border-l border-brand-gold/30" />
-            <div className="absolute bottom-6 right-6 w-4 h-4 border-b border-r border-brand-gold/30" />
-
-            {/* Botón de Cierre Cruz Minimalista */}
-            <button
-              onClick={() => setIsLightboxOpen(false)}
-              className="absolute top-6 right-6 text-brand-cream/60 hover:text-brand-gold text-4xl font-extralight transition-all duration-300 p-2 cursor-pointer z-50 focus:outline-none"
-              aria-label="Cerrar galería"
-            >
-              &times;
-            </button>
-
-            {/* Contenedor de la Imagen */}
-            <div className="relative w-full max-w-4xl h-[70vh] flex flex-col items-center justify-center px-4">
-              
-              <div className="relative w-full h-full max-h-[60vh] md:max-h-[65vh] border border-brand-gold/15 bg-black overflow-hidden shadow-3xl">
-                <AnimatePresence mode="popLayout">
-                  <motion.div
-                    key={activeImageIndexNormalized}
-                    initial={{ opacity: 0, scale: 0.98 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.98 }}
-                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                    className="absolute inset-0 w-full h-full"
-                  >
-                    <Image
-                      src={activeDetail.imagenes[activeImageIndexNormalized]}
-                      alt={activeDetail.titulo}
-                      fill
-                      className="object-contain"
-                      sizes="(max-width: 1200px) 100vw, 1200px"
-                    />
-                  </motion.div>
-                </AnimatePresence>
-
-                {/* Gradiente inferior para textos */}
-                <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/90 to-transparent pointer-events-none" />
-
-                {/* Leyenda Gourmet del Lightbox */}
-                <div className="absolute bottom-4 left-6 right-6 z-30 pointer-events-none text-left">
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-brand-gold font-semibold mb-1 block">
-                    {activeDetail.subtitulo}
-                  </span>
-                  <h3 className="text-base font-light tracking-wide text-brand-cream font-heading">
-                    {activeDetail.titulo}
-                  </h3>
-                </div>
-              </div>
-
-              {/* Botón de navegación izquierda */}
-              {activeDetail.imagenes.length > 1 && (
-                <button
-                  onClick={() => setActiveImageIndex((prev) => (prev - 1 + activeDetail.imagenes.length) % activeDetail.imagenes.length)}
-                  className="absolute left-6 md:-left-16 top-1/2 -translate-y-1/2 flex items-center justify-center w-12 h-12 rounded-full border border-brand-gold/20 hover:border-brand-gold bg-black/40 hover:bg-black/80 text-brand-gold hover:scale-105 transition-all duration-300 shadow-2xl z-50 cursor-pointer focus:outline-none"
-                  aria-label="Imagen anterior"
-                >
-                  <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
-                  </svg>
-                </button>
-              )}
-
-              {/* Botón de navegación derecha */}
-              {activeDetail.imagenes.length > 1 && (
-                <button
-                  onClick={() => setActiveImageIndex((prev) => (prev + 1) % activeDetail.imagenes.length)}
-                  className="absolute right-6 md:-right-16 top-1/2 -translate-y-1/2 flex items-center justify-center w-12 h-12 rounded-full border border-brand-gold/20 hover:border-brand-gold bg-black/40 hover:bg-black/80 text-brand-gold hover:scale-105 transition-all duration-300 shadow-2xl z-50 cursor-pointer focus:outline-none"
-                  aria-label="Siguiente imagen"
-                >
-                  <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
-                  </svg>
-                </button>
-              )}
-            </div>
-
-            {/* Previsualizadores/miniaturas inferiores en Lightbox */}
-            {activeDetail.imagenes.length > 1 && (
-              <div className="flex gap-2.5 mt-4 pb-6 overflow-x-auto max-w-full px-6 scrollbar-none">
-                {activeDetail.imagenes.map((imgSrc, index) => {
-                  const isSelected = index === activeImageIndexNormalized;
-                  return (
-                    <button
-                      key={imgSrc}
-                      onClick={() => setActiveImageIndex(index)}
-                      className={`relative w-14 h-14 border ${
-                        isSelected
-                          ? "border-brand-gold scale-105 shadow-[0_0_10px_rgba(212,175,55,0.4)]"
-                          : "border-brand-gold/20 hover:border-brand-gold/60 opacity-50 hover:opacity-100"
-                      } transition-all duration-300 overflow-hidden bg-black aspect-square flex-shrink-0 cursor-pointer`}
-                    >
-                      <Image
-                        src={imgSrc}
-                        alt={`Miniatura ${index + 1}`}
-                        fill
-                        sizes="80px"
-                        className="object-cover"
-                      />
-                    </button>
-                  );
-                })}
-              </div>
-            )}
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }
