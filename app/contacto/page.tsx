@@ -60,7 +60,7 @@ export default function ContactoPage() {
   ];
 
   return (
-    <div className="relative w-full min-h-[85vh] bg-brand-bg text-brand-cream flex items-center py-16 md:py-24">
+    <div className="relative w-full min-h-[85vh] bg-brand-bg text-brand-cream flex items-center py-16 md:py-24 overflow-hidden">
       {/* Resplandor dorado decorativo en el centro */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-gold/5 blur-3xl pointer-events-none rounded-full" />
 
@@ -99,7 +99,7 @@ export default function ContactoPage() {
               target={info.link.startsWith("http") ? "_blank" : undefined}
               rel={info.link.startsWith("http") ? "noopener noreferrer" : undefined}
               variants={itemVariants}
-              className="group relative flex flex-col items-center text-center p-8 bg-[#050505] border border-brand-gold/10 hover:border-brand-gold/40 transition-all duration-500 ease-luxury rounded-none cursor-pointer"
+              className="group relative flex flex-col items-center text-center p-5 sm:p-8 bg-[#050505] border border-brand-gold/10 hover:border-brand-gold/40 transition-all duration-500 ease-luxury rounded-none cursor-pointer w-full overflow-hidden"
             >
               {/* Sutil glow trasero en hover */}
               <div className="absolute inset-0 bg-gold-radial-glow opacity-0 group-hover:opacity-20 transition-opacity duration-500" />
@@ -115,7 +115,7 @@ export default function ContactoPage() {
               </h2>
 
               {/* Valor del Canal (Destacado) */}
-              <p className="text-sm sm:text-base md:text-lg lg:text-xl font-light tracking-wide text-brand-cream group-hover:text-brand-gold transition-colors duration-300 mb-4 font-heading break-all md:break-normal">
+              <p className="text-xs sm:text-base md:text-lg lg:text-xl font-light tracking-wide text-brand-cream group-hover:text-brand-gold transition-colors duration-300 mb-4 font-heading break-all sm:break-normal w-full overflow-hidden text-ellipsis">
                 {info.valor}
               </p>
 

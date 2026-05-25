@@ -65,7 +65,7 @@ export default function Home() {
   };
 
   return (
-    <main className="w-full min-h-screen bg-brand-bg select-none">
+    <main className="w-full min-h-screen bg-brand-bg select-none overflow-x-hidden">
       {/* 1. Sección de Bienvenida Inmersiva */}
       <HeroSection />
 

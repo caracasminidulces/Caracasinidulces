@@ -114,7 +114,7 @@ export default function DulcesPage() {
   };
 
   return (
-    <div className="relative w-full min-h-screen bg-brand-bg text-brand-cream py-16 md:py-24">
+    <div className="relative w-full min-h-screen bg-brand-bg text-brand-cream py-16 md:py-24 overflow-hidden">
       {/* Fondo decorativo con resplandor dorado */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-gold/5 blur-3xl rounded-full pointer-events-none" />
       <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-brand-gold/5 blur-3xl rounded-full pointer-events-none" />

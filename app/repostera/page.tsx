@@ -22,7 +22,7 @@ export default function ReposteraPage() {
   };
 
   return (
-    <div className="relative w-full min-h-screen bg-brand-bg text-brand-cream py-16 md:py-24">
+    <div className="relative w-full min-h-screen bg-brand-bg text-brand-cream py-16 md:py-24 overflow-hidden">
       {/* Resplandor dorado decorativo */}
       <div className="absolute top-1/4 right-0 w-80 h-80 bg-brand-gold/5 blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 left-0 w-80 h-80 bg-brand-gold/5 blur-3xl pointer-events-none" />
