@@ -343,6 +343,7 @@ export default function AssistantChat() {
     setMessages((prev) => [...prev, newMsg]);
     setInputText("");
 
+    // Procesar la respuesta del bot con un retardo orgánico pero reactivo (600ms)
     setTimeout(() => {
       const responseText = processResponse(userText);
       setMessages((prev) => [
@@ -441,7 +442,7 @@ export default function AssistantChat() {
 
     // Sobre Eventos que hace Victoria
     if (raw.includes("evento") || raw.includes("que hace victoria") || raw.includes("cuales haces") || raw.includes("tipo de evento") || raw.includes("boda") || raw.includes("bautizo") || raw.includes("comunion") || raw.includes("babyshower") || raw.includes("tematico")) {
-      return "**Victoria** realiza **todo tipo de eventos** y se adapta por completo a lo que tú como cliente necesites. ✨🎨\n\nDiseñamos mesas de dulces y experiencias culinarias personalizadas para cualquier celebración en Caracas:\n* **Cumpleaños de cualquier temática:** Victoria da vida a tus sueños más creativos modelando figuras personalizadas a mano. Algunos ejemplos son nuestros populares showrooms de Harry Potter, Aladdin, Alicia, Dinosaurios, Encanto, Fresita, Fútbol o Toy Story. 🎂\n* **Bodas & Compromisos:** Elegancia sublime y diseño de alta costura para tu gran día. 💍\n* **Celebraciones Familiares:** Bautizos, Primeras Comuniones, Baby Showers y aniversarios de ensueño. 🍼🌸\n* **Ediciones Especiales & Festividades:** Colecciones estacionales para Navidad, Pascuas, San Valentín y Halloween. 🎄🐰\n\nNo importa el tema o el tamaño de tu celebración, **Victoria se ajusta a lo que tú necesites** para hacerla inolvidable. Todas las piezas y detalles se modelan de forma 100% manual con ingredientes premium.\n\n¿Te gustaría planificar el tuyo? Te sugiero usar nuestro **Event Planner Wizard** en la sección de **Eventos** o escribirnos directamente al WhatsApp para diseñar tu cotización a medida. 📞🍰";
+      return "**Victoria** realiza **todo tipo de eventos** y se adapta por completo a lo que tú como cliente necesites. ✨🎨\n\nDiseñamos mesas de dulces y experiencias culinarias personalizadas para cualquier celebración en Caracas:\n* **Cumpleaños de cualquier temática:** Victoria da vida a tus sueños más creativos modelando figuras personalizadas a mano. Algunos ejemplos son nuestros populares showrooms de Harry Potter, Aladdin, Alicia, Dinosaurios, Encanto, Fresita, Fútbol o Toy Story. 🎂\n* **Bodas & Compromisos:** Elegancia sublime y diseño de alta costura para tu gran día. 💍\n* **Celebraciones Familiares:** Bautizos, Primeras Comuniones, Baby Showers y aniversarios de sueño. 🍼🌸\n* **Ediciones Especiales & Festividades:** Colecciones estacionales para Navidad, Pascuas, San Valentín y Halloween. 🎄🐰\n\nNo importa el tema o el tamaño de tu celebración, **Victoria se ajusta a lo que tú necesites** para hacerla inolvidable. Todas las piezas y detalles se modelan de forma 100% manual con ingredientes premium.\n\n¿Te gustaría planificar el tuyo? Te sugiero usar nuestro **Event Planner Wizard** en la sección de **Eventos** o escribirnos directamente al WhatsApp para diseñar tu cotización a medida. 📞🍰";
     }
 
     // Sobre Envío / Delivery / Transporte Seguro
